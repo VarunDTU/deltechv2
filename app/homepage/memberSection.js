@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import MembersCard from '../components/membersCard';
 import {members_one , members_two} from "@/app/lib/memberDetails";
 import { motion, useInView, useAnimation } from 'framer-motion';
+import Heading from '../components/Heading';
 
 const Members = () => {
     //to use when in view.    
@@ -28,11 +29,9 @@ const Members = () => {
 
     return (
         <div className=' max-w-screen'>
-            <div className="relative flex">
-                <div className="top-0 left-[30vw] absolute opacity-60 text-[#E5E5E5] text-9xl font-bold font-urbanist">MEMBERS</div>
-                <div className="top-4 left-[41vw] absolute text-[#262626] text-[64px] font-bold drop-shadow-xl font-urbanist leading-[96px]">Members</div>
-            </div>
-             
+            
+            <Heading background="members" main="Members" />
+
             <div className='pt-4 px-6 mt-[150px] flex flex-col w-full gap-[50px] justify-center items-center'>
                 <div className='flex flex-wrap gap-20 justify-center '>
                     {members_one.map((member, index) => (
