@@ -35,7 +35,7 @@ const BlogsSection = async () => {
   // if (error) return <p>Error : {error.message}</p>;
   return (
     <div className="flex justify-center items-center">
-      <div className="max-w-[1320px] mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-20 px-10 py-5">
+      <div className="max-w-full mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-20 px-10 py-5">
         {data.blogs.map((blog, index) => (
           <BlogCard
             key={index}
