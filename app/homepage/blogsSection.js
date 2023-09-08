@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import { getClient } from "../lib/client";
-import BlogCard from "../components/blogCard";
-
+import BlogCard from "../components/BlogCard";
 const BlogsSection = async () => {
   const query = gql`
     query MyQuery {
