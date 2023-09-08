@@ -1,12 +1,14 @@
 import HeroSection from "./homepage/herosection";
 import BlogsSection from "./homepage/blogsSection";
-// import MemberSection from "./homepage/MemberSection";
+import MemberSection from "./homepage/memberSection";
 
 export default function Page() {
   return (
     <div>
       <HeroSection />
-      {/* <MemberSection /> */}
+      <div className="relative">
+        <MemberSection />
+        </div>
       <BlogsSection />
     </div>
   );
