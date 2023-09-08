@@ -29,7 +29,7 @@ import Link from "next/link";
                     <span>
                       <FaPhoneAlt size={15} />
                     </span>
-                    <span className="ml-2">9431448889</span>
+                    <span className="ml-2"></span>
                   </div>
                 </div>
                 <div className="p-4 w-52  h-24 mb-5 flex flex-col justify-evenly items-center rounded-lg border  bg-gray-800 border-gray-700 hover:bg-gray-700">
@@ -41,7 +41,7 @@ import Link from "next/link";
                     <span>
                       <FaPhoneAlt size={15} />
                     </span>
-                    <span className="ml-2 leading-loose ">9013541686</span>
+                    <span className="ml-2 leading-loose "></span>
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@ import Link from "next/link";
               </h5>
               <div>
                 <Link
-                  href=''
+                  href=""
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-normal text-gray-400 text-sm hover:underline"
@@ -62,7 +62,7 @@ import Link from "next/link";
               </div>
               <div>
                 <Link
-                  href=''
+                  href=""
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-normal text-gray-400 text-sm hover:underline"

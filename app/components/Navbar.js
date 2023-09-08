@@ -1,15 +1,16 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Home", href: "#", current: true },
+  { name: "About", href: "#", current: false },
+  { name: "Members", href: "#", current: false },
+  { name: "Blogs", href: "#", current: false },
+  { name: "Contact", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -18,11 +19,19 @@ function classNames(...classes) {
 
 export default function NewNavbar() {
   const { user, error, isLoading } = useUser();
-  console.log(user);
+  const [navbartop, setnavbartop] = useState(true);
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setnavbartop(false);
+    } else setnavbartop(true);
+  };
+  window.addEventListener("scroll", changeColor);
   return (
     <Disclosure
       as="nav"
-      className=" backdrop-blur-sm bg-transparent fixed z-50 max-w-screen w-full "
+      className={` bg-slate-900 fixed z-50 max-w-screen w-full transition-all md:${
+        navbartop ? "bg-transparent" : "bg-slate-900"
+      }`}
     >
       {({ open }) => (
         <>
@@ -41,12 +50,8 @@ export default function NewNavbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
+                <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold h-8 w-full">
+                  Deltech
                 </div>
                 <div className="flex justify-center items-center w-full">
                   <div className="hidden sm:ml-6 sm:block">
@@ -109,13 +114,13 @@ export default function NewNavbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/blog/publish"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Settings
+                              CreateBlog
                             </a>
                           )}
                         </Menu.Item>
