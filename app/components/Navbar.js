@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -19,18 +19,24 @@ function classNames(...classes) {
 
 export default function NewNavbar() {
   const { user, error, isLoading } = useUser();
-  const [navbartop, setnavbartop] = useState(true);
-  const changeColor = () => {
-    if (window.scrollY >= 90) {
-      setnavbartop(false);
-    } else setnavbartop(true);
-  };
-  window.addEventListener("scroll", changeColor);
+  const [navbartop, setnavbartop] = useState(false);
+
+  useEffect(() => {
+    const changeColor = () => {
+      if (window.scrollY >= 90) {
+        setnavbartop(false);
+      } else {
+        setnavbartop(true);
+      }
+    };
+
+    window.addEventListener("scroll", changeColor);
+  });
   return (
     <Disclosure
       as="nav"
-      className={` bg-slate-900 fixed z-50 max-w-screen w-full transition-all md:${
-        navbartop ? "bg-transparent" : "bg-slate-900"
+      className={` bg-slate-900 fixed z-50 max-w-screen w-full transition-all ${
+        navbartop ? "md:bg-transparent" : "md:bg-slate-900"
       }`}
     >
       {({ open }) => (
