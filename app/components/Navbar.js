@@ -147,7 +147,11 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  <Link href="/api/auth/login">login</Link>
+                  <Link href="/api/auth/login">
+                    <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                      Login
+                    </button>
+                  </Link>
                 )}
               </div>
             </div>

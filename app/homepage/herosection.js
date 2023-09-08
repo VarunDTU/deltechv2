@@ -1,7 +1,7 @@
 const HeroSection = () => {
   return (
     <section className="mb-32">
-      <div className="relative overflow-hidden bg-cover backdrop-blur-lg bg-white bg-no-repeat bg-[url('./assets/hero.png')] h-[550px]">
+      <div className="relative overflow-hidden bg-cover backdrop-blur-lg bg-white bg-no-repeat bg-[url('./assets/hero.png')] h-screen min-w-screen">
         <div className="min-w-full min-h-full backdrop-blur-sm bg-blue-900/50 flex items-center justify-center">
           <div className="font-bold text-7xl text-white uppercase">
             Deltech-Mun
