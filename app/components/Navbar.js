@@ -43,7 +43,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const { user, error, isLoading } = useUser();
-  
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 ${
@@ -68,15 +68,17 @@ const Navbar = () => {
           </span>
         </Rlink>
         <div className="flex md:order-2">
-          
-            {!user ? (
-              <Link href="/api/auth/login" className="bg-sky-700 my-2 mr-4 md:mr-0 font-merriweather hover:bg-sky-500 text-white py-3 px-6 rounded-xl">
-                SignIn <FaArrowRight className="ml-1 inline" />
-              </Link>
-            ) : (
-              <div>{user?.name}</div>
-            )}
-          
+          {!user ? (
+            <Link
+              href="/api/auth/login"
+              className="bg-sky-700 my-2 mr-4 md:mr-0 font-merriweather hover:bg-sky-500 text-white py-3 px-6 rounded-xl"
+            >
+              SignIn <FaArrowRight className="ml-1 inline" />
+            </Link>
+          ) : (
+            <div>{user?.name}</div>
+          )}
+
           <button
             className="m-2 cursor-pointer text-white active:rotate-180 md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
