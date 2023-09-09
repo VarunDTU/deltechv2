@@ -24,7 +24,7 @@ const BlogCard = ({
         </div>
       </div>
       <div>
-        <hr className="my-3 h-0.5 border-t-0 bg-neutral-200 " />
+        <hr className="my-3 h-0.5 border-t-0 bg-neutral-100 " />
         <div className="px-5 pb-4 flex items-center justify-between rounded-b-2xl">
           <a
             className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl

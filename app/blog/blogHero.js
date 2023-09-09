@@ -30,6 +30,7 @@ const BlogHero = async () => {
       },
     },
   });
+  
 
   // console.log(data)
   // if (loading) return <p>Loading...</p>;
