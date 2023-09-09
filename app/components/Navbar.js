@@ -6,10 +6,10 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Home", href: "#", current: true },
+  { name: "Home", href: "/", current: true },
   { name: "About", href: "#", current: false },
   { name: "Members", href: "#", current: false },
-  { name: "Blogs", href: "#", current: false },
+  { name: "Blogs", href: "/blog", current: false },
   { name: "Contact", href: "#", current: false },
 ];
 
@@ -56,8 +56,11 @@ export default function NewNavbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold h-8 w-full">
-                  Deltech
+                <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
+                  <img
+                    className="h-10 flex items-center justify-center"
+                    src="./img/whiteDelTech.png"
+                  ></img>
                 </div>
                 <div className="flex justify-center items-center w-full">
                   <div className="hidden sm:ml-6 sm:block">
@@ -107,13 +110,13 @@ export default function NewNavbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/manage/blogs"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Your Profile
+                              Manage(beta)
                             </a>
                           )}
                         </Menu.Item>
@@ -147,7 +150,11 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  <Link href="/api/auth/login">login</Link>
+                  <Link href="/api/auth/login">
+                    <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                      Login
+                    </button>
+                  </Link>
                 )}
               </div>
             </div>
