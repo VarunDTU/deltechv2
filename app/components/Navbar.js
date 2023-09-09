@@ -2,8 +2,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -18,8 +19,10 @@ function classNames(...classes) {
 }
 
 export default function NewNavbar() {
-  const { user, error, isLoading } = useUser();
+  //const { user, error, isLoading } = useUser();
+
   const [navbartop, setnavbartop] = useState(false);
+  const { data: user, status } = useSession();
 
   useEffect(() => {
     const changeColor = () => {
@@ -92,7 +95,7 @@ export default function NewNavbar() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={user.picture}
+                          src={user?.user.image}
                           alt=""
                         />
                       </Menu.Button>
@@ -150,11 +153,11 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  <Link href="/api/auth/login">
-                    <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                  <button onClick={() => signIn()}>
+                    <div className="outline rounded p-1 hover:outline-none hover:bg-white ">
                       Login
-                    </button>
-                  </Link>
+                    </div>
+                  </button>
                 )}
               </div>
             </div>
