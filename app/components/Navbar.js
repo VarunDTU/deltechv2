@@ -6,10 +6,10 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Home", href: "#", current: true },
+  { name: "Home", href: "/", current: true },
   { name: "About", href: "#", current: false },
   { name: "Members", href: "#", current: false },
-  { name: "Blogs", href: "#", current: false },
+  { name: "Blogs", href: "/blog", current: false },
   { name: "Contact", href: "#", current: false },
 ];
 

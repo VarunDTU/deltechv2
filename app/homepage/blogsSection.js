@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import { getClient } from "../lib/client";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "@/app/components/BlogCard";
 import Heading from "../components/Heading";
 const BlogsSection = async () => {
   const query = gql`
@@ -35,8 +35,8 @@ const BlogsSection = async () => {
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error : {error.message}</p>;
   return (
-    <div>
-      <div className="w-full relative p-2">
+    <div className="my-12">
+      <div className="w-full relative py-10">
         <Heading background="&nbsp;blogs&nbsp;" main="Blogs&nbsp;" />
       </div>
       <div className="flex justify-center items-center mt-24 ">
