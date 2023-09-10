@@ -1,6 +1,7 @@
 import HeroSection from "./homepage/herosection";
 import BlogsSection from "./homepage/blogsSection";
 import MemberSection from "./homepage/memberSection";
+import About from "./homepage/about";
 
 export default function Page() {
   return (
@@ -10,6 +11,8 @@ export default function Page() {
         <MemberSection />
         </div>
       <BlogsSection />
+      <About />
+      <MemberSection />
     </div>
   );
 }

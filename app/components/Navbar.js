@@ -11,6 +11,10 @@ const navigation = [
   { name: "Members", href: "#", current: false },
   { name: "Blogs", href: "#", current: false },
   { name: "Contact", href: "#", current: false },
+  { name: "Home", href: "/", current: true },
+  { name: "Blogs", href: "/blog", current: false },
+  { name: "DelTech MUN'24", href: "/deltech24", current: false },
+  { name: "Campus Ambasador", href: "/campus_ambasador", current: false },
 ];
 
 function classNames(...classes) {
@@ -42,7 +46,7 @@ export default function NewNavbar() {
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
+            <div className="relative flex h-[74px] items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -58,6 +62,11 @@ export default function NewNavbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold h-8 w-full">
                   Deltech
+                <div className="flex my-2 justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
+                  <img
+                    className="h-12 flex items-center justify-center"
+                    src="./img/whiteDelTech.png"
+                  ></img>
                 </div>
                 <div className="flex justify-center items-center w-full">
                   <div className="hidden sm:ml-6 sm:block">
@@ -90,6 +99,8 @@ export default function NewNavbar() {
                         <img
                           className="h-8 w-8 rounded-full"
                           src={user.picture}
+                          className="h-9 w-9 rounded-full"
+                          src={user?.user.image}
                           alt=""
                         />
                       </Menu.Button>
@@ -132,6 +143,19 @@ export default function NewNavbar() {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
+                            <a
+                              href="/blog/register"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Register
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
                             <Link
                               href="/api/auth/logout"
                               className={classNames(
@@ -149,6 +173,11 @@ export default function NewNavbar() {
                 ) : (
                   <Link href="/api/auth/login">
                     <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                  <button onClick={() => signIn()}>
+                    <div
+                      className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
+                    >
                       Login
                     </button>
                   </Link>
