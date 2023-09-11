@@ -1,8 +1,11 @@
 "use client";
 import dynamic from "next/dynamic";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { CreateBlog } from "./uploadBlog";
-export default withPageAuthRequired(function Page() {
+import { useSession } from "next-auth/react";
+export default function Page() {
+  const { data: session } = useSession({
+    required: true,
+  });
   const Jodit = dynamic(() => import("./editor"), { ssr: false });
 
   return (
@@ -10,4 +13,4 @@ export default withPageAuthRequired(function Page() {
       <Jodit></Jodit>
     </div>
   );
-});
+};

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import NewNavbar from "./components/Navbar";
 import Footer from "./components/footer";
+import Provider from "./components/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,11 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
+        <Provider>
           <NewNavbar></NewNavbar>
           {children}
           <Footer></Footer>
-        </UserProvider>
+        </Provider>
       </body>
     </html>
   );

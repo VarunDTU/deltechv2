@@ -2,15 +2,15 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "About", href: "#", current: false },
-  { name: "Members", href: "#", current: false },
   { name: "Blogs", href: "/blog", current: false },
-  { name: "Contact", href: "#", current: false },
+  { name: "DelTech MUN'24", href: "/deltech24", current: false },
+  { name: "Campus Ambasador", href: "/campus_ambasador", current: false },
 ];
 
 function classNames(...classes) {
@@ -18,8 +18,10 @@ function classNames(...classes) {
 }
 
 export default function NewNavbar() {
-  const { user, error, isLoading } = useUser();
+  //const { user, error, isLoading } = useUser();
+
   const [navbartop, setnavbartop] = useState(false);
+  const { data: user, status } = useSession();
 
   useEffect(() => {
     const changeColor = () => {
@@ -41,7 +43,7 @@ export default function NewNavbar() {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl p-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -58,8 +60,8 @@ export default function NewNavbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
                   <img
-                    className="h-10 flex items-center justify-center"
-                    src="./img/whiteDelTech.png"
+                    className="h-12 flex items-center justify-center"
+                    src="/img/whiteDelTech.png"
                   ></img>
                 </div>
                 <div className="flex justify-center items-center w-full">
@@ -92,7 +94,7 @@ export default function NewNavbar() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={user.picture}
+                          src={user?.user.image}
                           alt=""
                         />
                       </Menu.Button>
@@ -116,7 +118,7 @@ export default function NewNavbar() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Manage(beta)
+                              Manage(alpha)
                             </a>
                           )}
                         </Menu.Item>
@@ -130,6 +132,32 @@ export default function NewNavbar() {
                               )}
                             >
                               CreateBlog
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/register/delegateRegistration"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Delegate Register
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/register/ipRegistration"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              IP Register
                             </a>
                           )}
                         </Menu.Item>
@@ -150,11 +178,14 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  <Link href="/api/auth/login">
-                    <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                  <button onClick={() => signIn()}>
+                    <div
+                      className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
+                    >
                       Login
-                    </button>
-                  </Link>
+                    </div>
+                  </button>
                 )}
               </div>
             </div>
