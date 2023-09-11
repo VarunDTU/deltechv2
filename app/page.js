@@ -1,5 +1,5 @@
 import HeroSection from "./homepage/herosection";
-// import BlogsSection from "./homepage/blogsSection";
+import CommitteeSection from "./homepage/committeeSection";
 import MemberSection from "./homepage/memberSection";
 import About from "./homepage/about";
 
@@ -8,10 +8,8 @@ export default function Page() {
     <div>
       <HeroSection />
       <About />
-      <div className="relative">
-        <MemberSection />
-        </div>
-      {/* <BlogsSection /> */}
+      <MemberSection />
+      <CommitteeSection />
     </div>
   );
 }
