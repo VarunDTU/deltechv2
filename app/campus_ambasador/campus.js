@@ -6,7 +6,7 @@ const Campus = () => {
     >
       <div className="md:flex md:flex-row items-center md:h-screen px-5">
         <div>
-          <h1 className="text-5xl md:py-10 py-20 md:text-7xl font-bold">
+          <h1 className="text-5xl md:py-10 pt-28 md:text-7xl font-bold">
             DelTech MUN Campus Ambassador Programme
           </h1>
         </div>
@@ -14,10 +14,10 @@ const Campus = () => {
           <img className="h-1/4" src="/img/campusStu.jpg"></img>
         </div>
       </div>
-      <div className="pt-5 bg-slate-300 rounded-t-3xl px-5" id="aboutus">
+      <div className="pt-5 bg-slate-300 rounded-t-3xl px-8" id="aboutus">
         <h2 className="text-3xl pb-5">About the Programme</h2>
-        <div className="md:flex md:flex-row items-center w-full">
-          <p className="w-full">
+        <div className="md:flex md:flex-row items-center justify-between w-full">
+          <div className="w-full">
             <h2 className="font-semibold">
               Have you ever wondered how does delegation works at the
               fundamental level?<br></br>
@@ -37,9 +37,9 @@ const Campus = () => {
             & DebSoc, DTU to inspire young minds who can redefine the debating
             and MUNing landscape. Interested students can apply through this
             form.
-          </p>
+          </div>
 
-          <div className="md:w-screen w-80 px-5 pl-10">
+          <div className="md:w-full w-80 px-5 pl-10">
             <img className="" src="/img/aboutcampus.png"></img>
           </div>
         </div>
@@ -64,7 +64,7 @@ const Campus = () => {
           </h3>
         </div>
         <div>
-          <p>
+          <div>
             <br></br>
             <h2 className="text-3xl py-2">
               Being an ambassador comes with benefits:
@@ -73,24 +73,24 @@ const Campus = () => {
             MUN Hoodie/Varsity Jacket *<br></br>• Goodies and DelTech kit worth
             2.5k
             <br></br>• Official DelTech MUN Certificate
-            <br></br>• DelTech Model United Nations 2023- Flagship Event (worth
+            <br></br>• DelTech Model United Nations 2024 - Flagship Event (worth
             1.5k)
-            <br></br>• Chance to meet the Chief Guest of DelTech MUN 2023.
+            <br></br>• Chance to meet the Chief Guest of DelTech MUN 2024.
             <br></br>• Attractive concessions & discounts on events from DelTech
             Team.
             <br></br>• Visit DTU Campus during the flagship event. <br></br>
-            <p1 className="text-sm">
+            <div className="text-sm">
               (*subject to satisfactory,performance as evaluated by the
               Directors of DelTech MUN & DebSoc)
-            </p1>
-          </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="justify-center items-center w-full py-10 flex">
         <a href="https://forms.gle/KdMctqbH2dCU6mE26">
-          <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+          {/* <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             Start you application
-          </button>
+          </button> */}
         </a>
       </div>
     </section>

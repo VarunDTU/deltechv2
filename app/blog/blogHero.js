@@ -52,7 +52,7 @@ const BlogHero = async () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-24 ">
+      <div className="flex justify-center items-center my-12 ">
         <div className="max-w-full mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-20 px-10 py-5">
           {data.blogs.map((blog, index) => (
             <BlogCard
