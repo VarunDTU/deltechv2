@@ -7,8 +7,9 @@ const OrientationForm = () => {
     required: true,
   });
 
-  const submitData = async (e) => {
-    e.preventDefault();
+  const submitData = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target)
     const mutation = gql`
       mutation createUser(
         $name: String!
@@ -42,31 +43,28 @@ const OrientationForm = () => {
         }
       }
     `;
-    const [addTodo, { data, loading, error }] = useMutation(mutation);
-
+    
     const variables = {
-      name: formData.name,
-      email: formData.email,
-      age: formData.age,
-      phone: formData.phone,
-      college: formData.college,
-      studyYear: formData.studyYear,
-      munAttended: formData.munAttended,
-      preference: formData.preference,
+        name: formData.get("name"),
+        email: formData.get("email"),
+        age: formData.get("age"),
+        phone: formData.get("phone"),
+        college: formData.get("college"),
+        studyYear: formData.get("studyYear"),
+        munAttended: formData.get("munAttended"),
+        preference: formData.get("preference"),
     };
-    addTodo({ variables });
 
-    if (loading) return "Submitting...";
-    if (error) return `Submission error! ${error.message}`;
+    // const [addTodo, { data, loading, error }] = useMutation(mutation);
+    // addTodo({ variables });
+    // if (loading) return "Submitting...";
+    // if (error) return `Submission error! ${error.message}`;
 
     // const result = await client.mutate(mutation, variables);
 
-    // if (result.data.createUser) {
-    //   // Redirect the user to the home page.
-    // } else {
-    //   // Handle the error.
-    // }
+    console.log(variables);
   };
+  
   return (
     <section className=" bg-gray-900 text-sm">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-full">
