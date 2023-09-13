@@ -1,4 +1,3 @@
-
 const Heading = ({ background, main }) => {
   return (
     <div className="flex place-items-end justify-center w-full overflow-hidden">
