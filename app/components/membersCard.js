@@ -3,6 +3,7 @@ import React from "react";
 import { AiFillLinkedin } from "react-icons/ai";
 import { fadeIn } from "@/app/lib/motion";
 import { motion } from "framer-motion";
+import Image from 'next/image';
 
 const MembersCard = ({ member, index }) => {
   const handleClick = () => {
@@ -11,6 +12,7 @@ const MembersCard = ({ member, index }) => {
     window.open(url, "_blank");
     // console.log(index);
   };
+
   return (
     <motion.div
       variants={fadeIn("up", "tween", index * 0.4, 0.55)}
@@ -19,12 +21,14 @@ const MembersCard = ({ member, index }) => {
     >
       <div
         className="flex flex-col bg-white w-[200px] rounded-tr-[48px] border border-[#C5C5C5] shadow-md 
-       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
+       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] transform transition-all hover:-translate-y-1 duration-150"
       >
-        <img
+        <Image
           src={member?.image}
           alt="Member-img"
-          className="m-6 w-50 object-contain rounded-full"
+          width={150}
+          height={50}
+          className="m-6 object-contain rounded-full"
         />
         <div className="flex flex-col mb-5">
           <p className="text-[#000000] font-bold text-center">{member?.name}</p>
