@@ -1,4 +1,3 @@
-
 const Heading = ({ background, main }) => {
   return (
 
