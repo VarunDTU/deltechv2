@@ -8,10 +8,9 @@ import { signIn } from "next-auth/react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "About", href: "#", current: false },
-  { name: "Members", href: "#", current: false },
   { name: "Blogs", href: "/blog", current: false },
-  { name: "Contact", href: "#", current: false },
+  // { name: "DelTech MUN'24", href: "/deltech24", current: false },
+  { name: "Campus Ambasador", href: "/campus_ambasador", current: false },
 ];
 
 function classNames(...classes) {
@@ -44,7 +43,7 @@ export default function NewNavbar() {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl p-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -61,8 +60,8 @@ export default function NewNavbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
                   <img
-                    className="h-10 flex items-center justify-center"
-                    src="./img/whiteDelTech.png"
+                    className="h-12 flex items-center justify-center"
+                    src="/img/whiteDelTech.png"
                   ></img>
                 </div>
                 <div className="flex justify-center items-center w-full">
@@ -110,7 +109,7 @@ export default function NewNavbar() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <a
                               href="/manage/blogs"
@@ -119,7 +118,7 @@ export default function NewNavbar() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Manage(beta)
+                              Manage(alpha)
                             </a>
                           )}
                         </Menu.Item>
@@ -133,6 +132,19 @@ export default function NewNavbar() {
                               )}
                             >
                               CreateBlog
+                            </a>
+                          )}
+                        </Menu.Item> */}
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/register"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Register (coming soon)
                             </a>
                           )}
                         </Menu.Item>
@@ -154,7 +166,10 @@ export default function NewNavbar() {
                   </Menu>
                 ) : (
                   <button onClick={() => signIn()}>
-                    <div className="outline rounded p-1 hover:outline-none hover:bg-white ">
+                    <div
+                      className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
+                    >
                       Login
                     </div>
                   </button>
