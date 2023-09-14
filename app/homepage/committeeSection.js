@@ -1,10 +1,14 @@
 import CommitteeCard from "@/app/components/committeeCard";
 import { committees } from "@/app/lib/committeeDetails";
+import Heading from "../components/Heading";
 
 const committeeSection = () => {
   return (
-    <div>
-      <div className="flex flex-wrap gap-20 justify-center ">
+    <div className="py-10">
+      <div className="py-10">
+        <Heading background="OUR COMMITTEES" main="OUR COMMITTEES" />
+      </div>
+      <div className=" flex flex-wrap gap-y-28 gap-x-20  justify-center py-20">
         {committees.map((committee, index) => (
           <CommitteeCard
             key={index}
