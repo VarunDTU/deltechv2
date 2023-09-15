@@ -1,19 +1,21 @@
-"use client"
+"use client";
 import React from "react";
 import { AiFillLinkedin } from "react-icons/ai";
 import { fadeIn } from "@/app/lib/motion";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const MembersCard = ({ member, index }) => {
+const MembersCard = ({ member, index, campus }) => {
   const handleClick = () => {
     const url = "https://www.linkedin.com/in/rahul-sharma-a21916226/";
     // onClick={()=> window.open(source_code_link,"_blank")
     window.open(url, "_blank");
     // console.log(index);
+    // console.log(campus);
   };
   return (
     <motion.div
-      variants={fadeIn("up", "tween", index * 0.4, 0.55)}
+      variants={fadeIn("up", "tween", index * 0.2, 0.4)}
       initial="hidden"
       animate="show"
     >
@@ -28,7 +30,8 @@ const MembersCard = ({ member, index }) => {
         />
         <div className="flex flex-col mb-5">
           <p className="text-[#000000] font-bold text-center">{member?.name}</p>
-          <p className="text-[#7B7474] text-center">{member?.position}</p>
+          <p className={`${campus == "EAST CAMPUS" ? "my-1" : "my-0" } text-[#7B7474] text-center`}>{member?.position}</p>
+          <p className="text-[#7B7474] text-center">{campus}</p>
         </div>
         <button
           onClick={handleClick}
@@ -47,3 +50,4 @@ const MembersCard = ({ member, index }) => {
 
 export default MembersCard;
 // hover:border-[#1341EC]
+// "text-[#7B7474] text-center" #040b23
