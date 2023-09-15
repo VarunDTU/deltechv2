@@ -39,7 +39,7 @@ const Members = () => {
         <div>
           <button
             onClick={handleAll}
-            className="w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-10 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#2c67b0] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
+            className="w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-10 transition-all duration-500 bg-gradient-to-t from-[#1341EC] via-[#2c67b0] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
           >
             View All
           </button>
