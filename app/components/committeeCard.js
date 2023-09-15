@@ -7,7 +7,6 @@ const committeeCard = ({
   name,
   img,
   excerpt,
-  description,
   guide,
 }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -20,17 +19,23 @@ const committeeCard = ({
 
   return (
     <div>
-        <div className="card">
-          <div className="imgBox">
-            <img src={img}></img>
-          </div>
-          <div className="content">
-            <h2>{shortName}</h2>
-            <h5>{name}</h5>
-            <p>{excerpt}</p>
-            <button className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
-            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]" onClick={openModal}>Read More</button>
-          </div>
+      <div className="card border border-[#C5C5C5] shadow-md 
+       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
+        <div className="imgBox">
+          <img src={img}></img>
+        </div>
+        <div className="content flex items-center justify-between flex-col">
+          <h2>{shortName}</h2>
+          <h5>{name}</h5>
+          <p>{excerpt}</p>
+          <button
+            className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
+            onClick={openModal}
+          >
+            Know More
+          </button>
+        </div>
       </div>
 
       {/* Model */}

@@ -9,11 +9,11 @@ const Details = () => {
           <div className="w-full  rounded-lg shadow border sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
             <div className="p-6 space-y-3 md:space-y-5 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-white">
-                Delegate Application
+                Orientation Application
               </h1>
               <div className="text-sm">
-                Behold for the 12th Edition of{" "}
-                <b> 𝐃𝐞𝐥𝐓𝐞𝐜𝐡 𝐌𝐨𝐝𝐞𝐥 𝐔𝐧𝐢𝐭𝐞𝐝 𝐍𝐚𝐭𝐢𝐨𝐧𝐬 𝐂𝐨𝐧𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝟐𝟎𝟐𝟑.</b>
+                Behold for the 13th Edition of{" "}
+                <b> 𝐃𝐞𝐥𝐓𝐞𝐜𝐡 𝐌𝐨𝐝𝐞𝐥 𝐔𝐧𝐢𝐭𝐞𝐝 𝐍𝐚𝐭𝐢𝐨𝐧𝐬 𝐂𝐨𝐧𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝟐𝟎𝟐4.</b>
               </div>
               <div className="text-sm">
                 This year it will be bigger, better, more competitive, and more

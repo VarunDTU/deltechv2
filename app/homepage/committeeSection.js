@@ -4,9 +4,9 @@ import Heading from "../components/Heading";
 
 const committeeSection = () => {
   return (
-    <div className="py-10">
-      <div className="py-10">
-        <Heading background="OUR COMMITTEES" main="OUR COMMITTEES" />
+    <div className="md:py-10 py-5">
+      <div className="md:py-10 py-5">
+        <Heading background="COMMITTEES" main="COMMITTEES" />
       </div>
       <div className=" flex flex-wrap gap-y-28 gap-x-20  justify-center py-20">
         {committees.map((committee, index) => (

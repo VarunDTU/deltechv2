@@ -19,7 +19,7 @@ const OrientationForm = () => {
       age: formData.get("age"),
       phone: formData.get("phone"),
       college: formData.get("college"),
-      currentYear: formData.get("studyYear"),
+      currentYear: formData.get("currentYear"),
       munAttended: formData.get("munAttended"),
     };
     console.log(formValue);
@@ -68,7 +68,7 @@ const OrientationForm = () => {
                   placeholder="your good name"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   required
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
 
@@ -87,7 +87,7 @@ const OrientationForm = () => {
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   required
                   onWheel={onWheel}
-                  autocomplete="off"
+                  autoComplete="off"
                   min="16"
                 />
               </div>
@@ -105,10 +105,10 @@ const OrientationForm = () => {
                   placeholder="contact number"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   required
-                  minlength="10"
+                  minLength="10"
                   min="1"
                   onWheel={onWheel}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div>
@@ -125,25 +125,25 @@ const OrientationForm = () => {
                   placeholder="your college name"
                   className="bordersm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   required
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div>
                 <label
-                  htmlFor="studyYear"
+                  htmlFor="currentYear"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   Current Year of study in College
                 </label>
                 <input
                   type="number"
-                  name="studyYear"
-                  id="studyYear"
+                  name="currentYear"
+                  id="currentYear"
                   placeholder="year of study in College"
                   className="bordersm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   required
                   min="1"
-                  autocomplete="off"
+                  autoComplete="off"
                   onWheel={onWheel}
                 />
               </div>
@@ -163,7 +163,7 @@ const OrientationForm = () => {
                   required
                   min="0"
                   onWheel={onWheel}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div>
