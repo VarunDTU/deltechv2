@@ -36,7 +36,7 @@ const HeroSection = () => {
     nextSlide();
   }, 5000);
   return (
-    <div className="w-full lg:h-screen pt-14 md:pt-0 h-96 relative group">
+    <div className="w-[100%] h-[50vh] md:h-screen relative group">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full bg-center bg-cover duration-500"
