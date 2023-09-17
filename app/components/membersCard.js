@@ -14,7 +14,6 @@ const MembersCard = ({ member, index, campus }) => {
     // console.log(campus);
     // console.log(url);
   };
-
   return (
     <motion.div
       variants={fadeIn("up", "tween", index * 0.2, 0.4)}
@@ -23,9 +22,9 @@ const MembersCard = ({ member, index, campus }) => {
     >
       <div
         className="flex flex-col bg-white w-[200px] rounded-tr-[48px] border border-[#C5C5C5] shadow-md 
-       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] transform transition-all hover:-translate-y-1 duration-150"
+       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
       >
-        <Image
+        <img
           src={member?.image}
           alt="Member-img"
           width={150}

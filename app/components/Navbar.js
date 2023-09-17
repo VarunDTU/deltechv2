@@ -8,8 +8,8 @@ import { signIn } from "next-auth/react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
+  { name: "Members", href: "/members", current: false },
   { name: "Blogs", href: "/blog", current: false },
-  // { name: "DelTech MUN'24", href: "/deltech24", current: false },
   { name: "Campus Ambasador", href: "/campus_ambasador", current: false },
 ];
 
@@ -37,19 +37,20 @@ export default function NewNavbar() {
   return (
     <Disclosure
       as="nav"
-      className={` bg-slate-900 fixed z-50 max-w-screen w-full transition-all ${
-        navbartop ? "md:bg-transparent" : "md:bg-slate-900"
+      className={`fixed z-50 max-w-screen w-full transition-all ${
+        navbartop ? "bg-transparent" : "bg-slate-900"
       }`}
     >
       {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl p-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
+        <div className={` ${
+          !open ? "bg-transparent" : "bg-slate-900"
+        }`}>
+          <div className=" mx-auto max-w-7xl p-2 sm:px-6 lg:px-8">
+            <div className="relative flex md:h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -60,7 +61,7 @@ export default function NewNavbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
                   <img
-                    className="h-12 flex items-center justify-center"
+                    className="md:h-12 h-10 flex items-center justify-center"
                     src="/img/whiteDelTech.png"
                   ></img>
                 </div>
@@ -91,7 +92,6 @@ export default function NewNavbar() {
                     <div>
                       <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
-                        <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
                           src={user?.user.image}
@@ -144,7 +144,7 @@ export default function NewNavbar() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Register (coming soon)
+                              Registration <br /> (opening soon)
                             </a>
                           )}
                         </Menu.Item>
@@ -167,7 +167,7 @@ export default function NewNavbar() {
                 ) : (
                   <button onClick={() => signIn()}>
                     <div
-                      className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+                      className="md:py-3 md:px-4 py-2 px-2.5 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
                     >
                       Login
@@ -198,7 +198,7 @@ export default function NewNavbar() {
               ))}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );

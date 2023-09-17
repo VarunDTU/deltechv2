@@ -1,39 +1,9 @@
-import { gql } from "@apollo/client";
-import { getClient } from "../lib/client";
+import { graphqlClient, blogsQuery } from "@/app/lib/graphqlClient";
 import BlogCard from "@/app/components/BlogCard";
 import Heading from "../components/Heading";
 const BlogsSection = async () => {
-  const query = gql`
-    query MyQuery {
-      blogs {
-        author {
-          name
-          photo {
-            url
-          }
-        }
-        createdAt
-        excerpt
-        slug
-        thumbnail {
-          url
-        }
-        title
-      }
-    }
-  `;
-  const { data } = await getClient().query({
-    query,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 200 },
-      },
-    },
-  });
-
-  // console.log(data)
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error : {error.message}</p>;
+  const { data } = await graphqlClient.request(blogsQuery);
+  
   return (
     <div className="my-12">
       <div className="w-full relative py-10">

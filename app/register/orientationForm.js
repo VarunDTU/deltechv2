@@ -1,70 +1,32 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { gql, useMutation } from "@apollo/client";
+import { client, createRegistration } from "./createRegistration";
 
 const OrientationForm = () => {
   const { data: user } = useSession({
     required: true,
   });
+  const onWheel = (e) => {
+    e.target.blur();
+  };
 
   const submitData = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target)
-    const mutation = gql`
-      mutation createUser(
-        $name: String!
-        $email: String!
-        $age: Int!
-        $phone: Int!
-        $college: String!
-        $studyYear: Int!
-        $munAttended: Int!
-        $preference: String!
-      ) {
-        createUser(
-          name: $name
-          email: $email
-          age: $age
-          phone: $phone
-          college: $college
-          currentYear: $studyYear
-          munAttended: $munAttended
-          preference: $preference
-        ) {
-          id
-          name
-          email
-          age
-          phone
-          college
-          currentYear
-          munAttended
-          preference
-        }
-      }
-    `;
-    
-    const variables = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        age: formData.get("age"),
-        phone: formData.get("phone"),
-        college: formData.get("college"),
-        studyYear: formData.get("studyYear"),
-        munAttended: formData.get("munAttended"),
-        preference: formData.get("preference"),
+    const formData = new FormData(event.target);
+    const formValue = {
+      name: formData.get("name"),
+      email: user?.user.email,
+      age: formData.get("age"),
+      phone: formData.get("phone"),
+      college: formData.get("college"),
+      currentYear: formData.get("currentYear"),
+      munAttended: formData.get("munAttended"),
     };
-
-    // const [addTodo, { data, loading, error }] = useMutation(mutation);
-    // addTodo({ variables });
-    // if (loading) return "Submitting...";
-    // if (error) return `Submission error! ${error.message}`;
-
-    // const result = await client.mutate(mutation, variables);
-
-    console.log(variables);
+    console.log(formValue);
+    const resp = await client.request(createRegistration, formValue);
+    console.log(resp);
   };
-  
+
   return (
     <section className=" bg-gray-900 text-sm">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-full">
@@ -105,7 +67,8 @@ const OrientationForm = () => {
                   id="name"
                   placeholder="your good name"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  autoComplete="off"
                 />
               </div>
 
@@ -122,7 +85,10 @@ const OrientationForm = () => {
                   id="age"
                   placeholder="your age"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  onWheel={onWheel}
+                  autoComplete="off"
+                  min="16"
                 />
               </div>
               <div>
@@ -133,12 +99,16 @@ const OrientationForm = () => {
                   WhatsApp Number
                 </label>
                 <input
-                  type="number"
+                  type="tel"
                   name="phone"
                   id="phone"
                   placeholder="contact number"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  minLength="10"
+                  min="1"
+                  onWheel={onWheel}
+                  autoComplete="off"
                 />
               </div>
               <div>
@@ -154,23 +124,27 @@ const OrientationForm = () => {
                   id="college"
                   placeholder="your college name"
                   className="bordersm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  autoComplete="off"
                 />
               </div>
               <div>
                 <label
-                  htmlFor="studyYear"
+                  htmlFor="currentYear"
                   className="block mb-2 text-sm font-medium text-white"
                 >
                   Current Year of study in College
                 </label>
                 <input
                   type="number"
-                  name="studyYear"
-                  id="studyYear"
+                  name="currentYear"
+                  id="currentYear"
                   placeholder="year of study in College"
                   className="bordersm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  min="1"
+                  autoComplete="off"
+                  onWheel={onWheel}
                 />
               </div>
               <div>
@@ -186,7 +160,10 @@ const OrientationForm = () => {
                   id="munAttended"
                   placeholder="your answer"
                   className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                  //   required
+                  required
+                  min="0"
+                  onWheel={onWheel}
+                  autoComplete="off"
                 />
               </div>
               <div>
@@ -200,7 +177,7 @@ const OrientationForm = () => {
                   name="preference"
                   id="preference"
                   className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-white focus:border-white"
-                  //   required
+                  required
                 >
                   <option>Preference 1</option>
                   <option>Preference 2</option>
@@ -209,7 +186,6 @@ const OrientationForm = () => {
               </div>
               <button
                 type="submit"
-                //   onClick={submitData}
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800"
               >
                 Register
