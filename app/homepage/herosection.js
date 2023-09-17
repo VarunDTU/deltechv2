@@ -7,7 +7,7 @@ const HeroSection = () => {
   const slides = [
     {
       url: "./img/hero.png",
-      title: " DELTECH MUN",
+      title: " DELTECH MUN'24",
     },
     {
       url: "./img/cover.png",

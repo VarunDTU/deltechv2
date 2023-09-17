@@ -5,7 +5,7 @@ import {
   senior_Council,
   junior_Council,
   east_Campus,
-  administrative_Council
+  administrative_Council,
 } from "../lib/memberDetails";
 
 //headlessUi
@@ -17,10 +17,10 @@ function classNames(...classes) {
 
 const MemberPage = () => {
   const lists = [
+    "Administrative Council",
     "Senior Council",
     "Junior Council",
     "East Campus",
-    "Administrative Council",
   ];
 
   return (
@@ -64,9 +64,21 @@ const MemberPage = () => {
           </Tab.List>
 
           <Tab.Panels>
+            <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
+              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
+                {administrative_Council.map((member, index) => (
+                  <MembersCard
+                    key={`member-${index}`}
+                    index={index}
+                    member={member}
+                  />
+                ))}
+              </div>
+            </Tab.Panel>
+
             {/* Senior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-12">
+              <div className="flex flex-wrap justify-center items-center sm:gap-12 gap-6">
                 {senior_Council.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -79,7 +91,7 @@ const MemberPage = () => {
 
             {/* Junior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-12">
+              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
                 {junior_Council.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -92,7 +104,7 @@ const MemberPage = () => {
 
             {/* East Campus Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-12">
+              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
                 {east_Campus.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -103,19 +115,6 @@ const MemberPage = () => {
                 ))}
               </div>
             </Tab.Panel>
-
-            <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-12">
-                {administrative_Council.map((member, index) => (
-                  <MembersCard
-                    key={`member-${index}`}
-                    index={index}
-                    member={member}
-                  />
-                ))}
-              </div>
-            </Tab.Panel>
-
           </Tab.Panels>
         </Tab.Group>
       </div>
