@@ -7,11 +7,11 @@ const HeroSection = () => {
   const slides = [
     {
       url: "./img/hero.png",
-      title: " DELTECH MUN",
+      title: " DELTECH MUN'24",
     },
     {
       url: "./img/without_text.jpg",
-      title: "New Time",
+      title: "COMMING SOON",
     },
   ];
 
@@ -41,7 +41,7 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full bg-center bg-cover duration-500"
       >
-        <div className="w-full h-full backdrop-blur-sm bg-blue-800/30 flex items-center justify-center font-bold lg:text-8xl text-6xl text-white uppercase">
+        <div className="w-full h-full bg-blue-800/30 flex items-center justify-center align-middle text-center font-bold lg:text-8xl text-6xl text-white uppercase">
           {slides[currentIndex].title}
         </div>
       </div>
