@@ -5,7 +5,7 @@ import {
   senior_Council,
   junior_Council,
   east_Campus,
-  administrative_Council
+  administrative_Council,
 } from "../lib/memberDetails";
 
 //headlessUi
@@ -17,10 +17,10 @@ function classNames(...classes) {
 
 const MemberPage = () => {
   const lists = [
+    "Administrative Council",
     "Senior Council",
     "Junior Council",
     "East Campus",
-    "Administrative Council",
   ];
 
   return (
@@ -64,6 +64,19 @@ const MemberPage = () => {
           </Tab.List>
 
           <Tab.Panels>
+            {/* administrative_Council */}
+            <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
+              <div className="flex flex-wrap justify-center gap-12">
+                {administrative_Council.map((member, index) => (
+                  <MembersCard
+                    key={`member-${index}`}
+                    index={index}
+                    member={member}
+                  />
+                ))}
+              </div>
+            </Tab.Panel>
+
             {/* Senior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
               <div className="flex flex-wrap justify-center gap-12">
@@ -103,19 +116,6 @@ const MemberPage = () => {
                 ))}
               </div>
             </Tab.Panel>
-
-            <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-12">
-                {administrative_Council.map((member, index) => (
-                  <MembersCard
-                    key={`member-${index}`}
-                    index={index}
-                    member={member}
-                  />
-                ))}
-              </div>
-            </Tab.Panel>
-
           </Tab.Panels>
         </Tab.Group>
       </div>
