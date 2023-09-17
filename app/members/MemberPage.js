@@ -64,8 +64,9 @@ const MemberPage = () => {
           </Tab.List>
 
           <Tab.Panels>
+            {/* administrative_Council */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
+              <div className="flex flex-wrap justify-center gap-12">
                 {administrative_Council.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -78,7 +79,7 @@ const MemberPage = () => {
 
             {/* Senior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center items-center sm:gap-12 gap-6">
+              <div className="flex flex-wrap justify-center gap-12">
                 {senior_Council.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -91,7 +92,8 @@ const MemberPage = () => {
 
             {/* Junior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
+
+              <div className="flex flex-wrap justify-center gap-12">
                 {junior_Council.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
@@ -104,7 +106,10 @@ const MemberPage = () => {
 
             {/* East Campus Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-              <div className="flex flex-wrap justify-center sm:gap-12 gap-6">
+
+              <div className="flex flex-wrap justify-center gap-12">
+              
+
                 {east_Campus.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}

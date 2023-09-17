@@ -7,11 +7,12 @@ import Image from "next/image";
 
 const MembersCard = ({ member, index, campus }) => {
   const handleClick = () => {
-    const url = "https://www.linkedin.com/in/rahul-sharma-a21916226/";
+    const url = member.linkedin;
     // onClick={()=> window.open(source_code_link,"_blank")
     window.open(url, "_blank");
     // console.log(index);
     // console.log(campus);
+    // console.log(url);
   };
   return (
     <motion.div
@@ -26,16 +27,18 @@ const MembersCard = ({ member, index, campus }) => {
         <img
           src={member?.image}
           alt="Member-img"
-          className="m-6 w-50 object-contain rounded-full"
+          width={150}
+          height={20}
+          className="m-6 object-cover rounded-full"
         />
-        <div className="flex flex-col mb-5">
-          <p className="text-[#000000] font-bold text-center">{member?.name}</p>
-          <p className={`${campus == "EAST CAMPUS" ? "my-1" : "my-0" } text-[#7B7474] text-center`}>{member?.position}</p>
-          <p className="text-[#7B7474] text-center">{campus}</p>
+        <div className={`${campus == "EAST CAMPUS" ? "mb-4" : "mb-9"} flex flex-col `}>
+          <p className="text-[#000000] font-bold text-center ">{member?.name}</p>
+          <p className={`${campus == "EAST CAMPUS" ? "my-1" : "my-0"} text-[#7B7474] text-center mx-1 h-9`}>{member?.position}</p>
+          <p className={`${campus == "EAST CAMPUS" ? "block" : "hidden" } text-[#7B7474] text-center`}>{campus}</p>
         </div>
         <button
           onClick={handleClick}
-          className="py-3 px-7 mx-auto w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl mb-8
+          className="py-3 px-7 mx-auto w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl mb-5
       hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
         >
           <div className="flex flex-row items-center justify-center gap-1">
@@ -51,3 +54,4 @@ const MembersCard = ({ member, index, campus }) => {
 export default MembersCard;
 // hover:border-[#1341EC]
 // "text-[#7B7474] text-center" #040b23
+//"https://www.linkedin.com/in/rahul-sharma-a21916226/
