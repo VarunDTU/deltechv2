@@ -2,13 +2,7 @@
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-const committeeCard = ({
-  shortName,
-  name,
-  img,
-  excerpt,
-  guide,
-}) => {
+const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -19,8 +13,10 @@ const committeeCard = ({
 
   return (
     <div>
-      <div className="card border border-[#C5C5C5] shadow-md 
-       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
+      <div
+        className="card border border-[#C5C5C5] shadow-md 
+       hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
+      >
         <div className="imgBox">
           <img src={img}></img>
         </div>
@@ -121,7 +117,7 @@ const committeeCard = ({
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class="font-dmserif text-3xl pb-10 font-bold text-neutral-300">
+                        <h1 class=" text-3xl pb-10 font-bold text-neutral-300">
                           Chairperson
                         </h1>
                         <p class="mb-20 text-xl font-semibold italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -139,7 +135,7 @@ const committeeCard = ({
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class="font-dmserif text-3xl pb-10 font-bold text-neutral-300">
+                        <h1 class=" text-3xl pb-10 font-bold text-neutral-300">
                           Vice Chairperson
                         </h1>
                         <p class="mb-20 text-xl font-semibold italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

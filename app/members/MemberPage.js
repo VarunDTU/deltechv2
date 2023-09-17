@@ -92,6 +92,7 @@ const MemberPage = () => {
 
             {/* Junior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
+
               <div className="flex flex-wrap justify-center gap-12">
                 {junior_Council.map((member, index) => (
                   <MembersCard
@@ -105,7 +106,10 @@ const MemberPage = () => {
 
             {/* East Campus Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
+
               <div className="flex flex-wrap justify-center gap-12">
+              
+
                 {east_Campus.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}
