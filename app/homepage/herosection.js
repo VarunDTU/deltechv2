@@ -10,8 +10,8 @@ const HeroSection = () => {
       title: " DELTECH MUN",
     },
     {
-      url: "./img/without_text.jpg",
-      title: "New Time",
+      url: "./img/cover.png",
+      title: "Model United nations conference",
     },
   ];
 
@@ -34,14 +34,14 @@ const HeroSection = () => {
   };
   setTimeout(() => {
     nextSlide();
-  }, 5000);
+  }, 10000);
   return (
     <div className="w-[100%] h-[50vh] md:h-screen relative group">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className="w-full h-full bg-center bg-cover duration-500"
       >
-        <div className="w-full h-full backdrop-blur-sm bg-blue-800/30 flex items-center justify-center font-bold lg:text-8xl text-6xl text-white uppercase">
+        <div className="w-full h-full backdrop-blur-sm bg-blue-800/30 flex items-center justify-center font-bold lg:text-8xl text-6xl text-white uppercase text-center">
           {slides[currentIndex].title}
         </div>
       </div>
