@@ -329,7 +329,7 @@ const east_Campus = [
     category: "Sc",
     position: "Vice-President",
     campus: "EAST CAMPUS",
-    image: "/img/EC/Shivi Sud(vice president East Campus).pngg",
+    image: "/img/EC/Shivi Sud(vice president East Campus).png",
     linkedin: "https://www.linkedin.com/in/shivi-sud-70b44826b/",
   },
   {
