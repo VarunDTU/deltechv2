@@ -3,8 +3,8 @@ const senior_Council = [
     name: "Vaibhav Gupta",
     category: "Sc",
     position: "Co-Director Of Technical Affairs",
-    image: "/img/SC/Vaibhav Gupta (Director of Technical Affairs).png",
-    linkedin: "https://www.linkedin.com/in/vaibhav-gupta-524a0b223",
+    image: "/img/SC/Vaibhav Gupta (Director of Technical Affairs).webp",
+    linkedin: "https://www.linkedin.com/in/zostera/",
   },
   {
     name: "Varun Negi",
@@ -16,7 +16,7 @@ const senior_Council = [
   {
     name: "Arin Singhal",
     category: "Sc",
-    position: "Director Of Administration Affairs",
+    position: "Director Of Administrative Affairs",
     image: "/img/SC/Arin Singhal (Director of Administration Affairs).png",
     linkedin: "https://www.linkedin.com/in/arinsinghal",
   },

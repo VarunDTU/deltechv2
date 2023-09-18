@@ -29,7 +29,7 @@ const Footer = () => {
                   <span>
                     <FaPhoneAlt size={15} />
                   </span>
-                  <span className="ml-2">94007084266</span>
+                  <span className="ml-2">9407084266</span>
                 </div>
               </div>
               <div className="p-4 w-52  h-24 mb-5 flex flex-col justify-evenly items-center rounded-lg border  bg-gray-800 border-gray-700 hover:bg-gray-700">

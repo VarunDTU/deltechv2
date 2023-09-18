@@ -28,15 +28,14 @@ const MemberPage = () => {
       <div className="bg-[#040b23]">
         <div
           style={{ backgroundImage: `url(./img/section.png)` }}
-          className="w-full h-full bg-center py-10 bg-cover"
+          className="w-full h-full bg-center py-3 bg-cover"
         >
-          <div className="mx-auto max-w-screen-sm text-center pt-28 lg:mb-16 mb-8">
-            <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-white ">
-              Our Members
+          <div className="mx-auto max-w-screen-md text-center md:pt-32 pt-20 md:mb-16 mb-6">
+            <h2 className="mb-3 text-3xl lg:text-4xl uppercase tracking-wider font-merriweather font-extrabold text-white ">
+              Team Members 
             </h2>
-            <p className="font-light text-gray-400 sm:text-xl">
-              We use an agile approach to test assumptions and connect with the
-              needs of your audience early and often.
+            <p className="font-light text-gray-400 sm:text-xl font-serif p-4">
+            DelTech MUN & DebSoc stands 56 Council Members and 60+ Diplomats strong. Ready to take onto ant challenge of the world. Reach out to us ! We are happy to discuss the pressing problems of the world even when the clock strikes midnight.
             </p>
           </div>
         </div>
@@ -50,7 +49,7 @@ const MemberPage = () => {
                 key={list}
                 className={({ selected }) =>
                   classNames(
-                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-[#E6E6FA]",
+                    "w-full rounded-lg py-2.5 text-sm font-serif font-medium leading-5 text-[#E6E6FA]",
                     "focus:outline-none focus:text-[#33CCCC] focus:bg-[#161f3b]",
                     selected
                       ? "shadow"
