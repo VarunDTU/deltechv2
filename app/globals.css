@@ -106,12 +106,10 @@ input[type=number] {
     color: #fff;
     background: #1341EC;
   }
-  /* width */
+  /* scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
     background: #ccc;
-    border-radius: 10px;
-    
   }
   ::-webkit-scrollbar-thumb {
     background: rgb(255, 255, 255);

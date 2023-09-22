@@ -10,6 +10,7 @@ import {
 
 //headlessUi
 import { Tab } from "@headlessui/react";
+import SectionTitle from "../components/sectionTitle";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -25,22 +26,10 @@ const MemberPage = () => {
 
   return (
     <>
-      <div className="bg-[#040b23]">
-        <div
-          style={{ backgroundImage: `url(./img/section.png)` }}
-          className="w-full h-full bg-center py-3 bg-cover"
-        >
-          <div className="mx-auto max-w-screen-md text-center md:pt-32 pt-20 md:mb-16 mb-6">
-            <h2 className="mb-3 text-3xl lg:text-4xl uppercase tracking-wider font-merriweather font-extrabold text-white ">
-              Team Members 
-            </h2>
-            <p className="font-light text-gray-400 sm:text-xl font-serif p-4">
-            DelTech MUN & DebSoc stands 56 Council Members and 60+ Diplomats strong. Ready to take onto ant challenge of the world. Reach out to us ! We are happy to discuss the pressing problems of the world even when the clock strikes midnight.
-            </p>
-          </div>
-        </div>
-      </div>
-
+      <SectionTitle
+        title="Team Members"
+        excerpt="DelTech MUN & DebSoc stands 56 Council Members and 60+ Diplomats strong. Ready to take onto ant challenge of the world. Reach out to us ! We are happy to discuss the pressing problems of the world even when the clock strikes midnight."
+      />
       <div className="w-full px-2 py-16 sm:px-0">
         <Tab.Group defaultIndex={0}>
           <Tab.List className="flex space-x-1 rounded-xl bg-[#040b23] p-1 max-w-xl mx-auto">
@@ -91,7 +80,6 @@ const MemberPage = () => {
 
             {/* Junior Council Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-
               <div className="flex flex-wrap justify-center gap-12">
                 {junior_Council.map((member, index) => (
                   <MembersCard
@@ -105,10 +93,7 @@ const MemberPage = () => {
 
             {/* East Campus Panel */}
             <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
-
               <div className="flex flex-wrap justify-center gap-12">
-              
-
                 {east_Campus.map((member, index) => (
                   <MembersCard
                     key={`member-${index}`}

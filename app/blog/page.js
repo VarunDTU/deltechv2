@@ -1,9 +1,9 @@
-import BlogHero from "./blogHero";
+import BlogPage from "./blogPage";
 
 export default function Page() {
     return (
       <div>
-        <BlogHero/>
+        <BlogPage/>
       </div>
     );
   }

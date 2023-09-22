@@ -8,7 +8,7 @@ const About = () => {
         <div className="w-full relative py-10">
           <Heading background="about us" main="about us" />
         </div>
-        <p className="mb-6 font-light text-gray-500 md:text-lg mx-7 md:mx-0">
+        <p className="mb-6 font-light text-gray-500 md:text-lg mx-7 md:mx-0 font-serif">
           DelTech MUN and Debating society, the oldest debating society in DTU,
           is a collection of discussing enthusiasts spread out across both
           verticals of the University, the Main Campus, and the University

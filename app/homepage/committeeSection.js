@@ -8,7 +8,7 @@ const committeeSection = () => {
       <div className="md:py-10 py-5">
         <Heading background="COMMITTEES" main="COMMITTEES" />
       </div>
-      <div className=" flex flex-wrap gap-y-28 gap-x-20  justify-center py-20">
+      <div className=" flex flex-wrap gap-y-28 gap-x-10  justify-center py-20">
         {committees.map((committee, index) => (
           <CommitteeCard
             key={index}

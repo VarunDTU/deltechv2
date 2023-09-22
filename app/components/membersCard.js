@@ -4,12 +4,9 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { fadeIn } from "@/app/lib/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const MembersCard = ({ member, index, campus }) => {
-  const handleClick = () => {
-    const url = member.linkedin;
-    window.open(url, "_blank");
-  };
   return (
     <motion.div
       variants={fadeIn("up", "tween", index * 0.2, 0.4)}
@@ -30,10 +27,10 @@ const MembersCard = ({ member, index, campus }) => {
             draggable="false"
           />
           <div className={`flex flex-col px-3`}>
-            <p className="text-[#000000] font-bold text-center pb-1 font-merriweather">
+            <p className="text-[#000000] font-bold text-center pb-1 font-merriweather capitalize">
               {member?.name}
             </p>
-            <p className={` text-[#7B7474] text-center mx-1 font-serif`}>
+            <p className={` text-[#7B7474] text-center mx-1 font-serif capitalize`}>
               {member?.position}
             </p>
             <p
@@ -45,8 +42,9 @@ const MembersCard = ({ member, index, campus }) => {
             </p>
           </div>
         </div>
-        <button
-          onClick={handleClick}
+        <Link
+          href={member?.linkedin || "https://www.linkedin.com/company/deltechdebsoc/mycompany/"}
+          target="_blank"
           className="py-3 px-6 mx-auto w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl mb-4
       hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
         >
@@ -54,7 +52,7 @@ const MembersCard = ({ member, index, campus }) => {
             <AiFillLinkedin size={20} />
             <span> View Profile </span>
           </div>
-        </button>
+        </Link>
       </div>
     </motion.div>
   );

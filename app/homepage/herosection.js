@@ -1,16 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
 
 const HeroSection = () => {
   const slides = [
     {
-      url: "./img/hero.png",
+      url: "/img/heroCrousel/hero.png",
       title: " DELTECH MUN'24",
     },
     {
-      url: "./img/cover.png",
+      url: "/img/heroCrousel/polaroid.jpg",
       title: "Model United nations conference",
     },
   ];
@@ -34,23 +34,24 @@ const HeroSection = () => {
   };
   setTimeout(() => {
     nextSlide();
-  }, 10000);
+  }, 20000);
   return (
-    <div className="w-[100%] h-[50vh] md:h-screen relative group">
-      <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full bg-center bg-cover duration-500"
-      >
-        <div className="w-full h-full backdrop-blur-sm bg-blue-800/30 flex items-center justify-center font-bold lg:text-8xl text-6xl text-white uppercase text-center">
-          {slides[currentIndex].title}
-        </div>
+    <div className="w-[100%] h-[60vh] md:h-screen relative group">
+      <Image
+        src={slides[currentIndex].url}
+        alt="hero"
+        fill
+        className="w-full absolute h-full bg-center bg-cover duration-500"
+      />
+      <div className="w-full h-full backdrop-blur-[1px] bg-blue-800/20 flex items-center justify-center font-semibold md:text-7xl sm:text-6xl text-5xl text-white uppercase text-center">
+        <div className="w-4/5 font-serif">{slides[currentIndex].title}</div>
       </div>
       {/* Left Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] md:left-8 left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
         <BsChevronCompactLeft onClick={prevSlide} size={30} />
       </div>
       {/* Right Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] md:right-8 right-5 rounded-full p-2 bg-black/20 text-white cursor-pointer">
         <BsChevronCompactRight onClick={nextSlide} size={30} />
       </div>
       <div className="flex top-4 justify-center py-2">

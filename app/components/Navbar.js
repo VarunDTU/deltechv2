@@ -1,10 +1,11 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -42,12 +43,10 @@ export default function NewNavbar() {
       }`}
     >
       {({ open }) => (
-        <div className={` ${
-          !open ? "bg-transparent" : "bg-slate-900"
-        }`}>
-          <div className=" mx-auto max-w-7xl p-2 sm:px-6 lg:px-8">
+        <div className={` ${!open ? "bg-transparent" : "bg-slate-900"}`}>
+          <div className=" mx-auto max-w-7xl p-2 md:px-6 lg:px-8">
             <div className="relative flex md:h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
@@ -58,18 +57,21 @@ export default function NewNavbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
-                  <img
-                    className="md:h-12 h-10 flex items-center justify-center"
+              <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+                <div className="flex justify-center ml-3 md:w-auto flex-shrink-0 items-center w-full">
+                  <Image
+                    alt="logo"
+                    height={10}
+                    width={50}
                     src="/img/whiteDelTech.png"
-                  ></img>
+                    draggable="false"
+                  />
                 </div>
                 <div className="flex justify-center items-center w-full">
-                  <div className="hidden sm:ml-6 sm:block">
+                  <div className="hidden md:ml-6 md:block">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -79,23 +81,25 @@ export default function NewNavbar() {
                           aria-current={item.current ? "page" : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
                 {/* Profile dropdown */}
                 {user ? (
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
-                        <img
+                        <Image
+                          width={8}
+                          height={8}
                           className="h-8 w-8 rounded-full"
                           src={user?.user.image}
-                          alt=""
+                          alt="avatar"
                         />
                       </Menu.Button>
                     </div>
@@ -137,7 +141,7 @@ export default function NewNavbar() {
                         </Menu.Item> */}
                         <Menu.Item>
                           {({ active }) => (
-                            <a
+                            <Link
                               href="/register"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
@@ -145,7 +149,7 @@ export default function NewNavbar() {
                               )}
                             >
                               Registration <br /> (opening soon)
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
@@ -178,7 +182,7 @@ export default function NewNavbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
