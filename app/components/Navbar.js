@@ -58,7 +58,7 @@ export default function NewNavbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-                <div className="flex justify-center ml-3 md:w-auto flex-shrink-0 items-center w-full">
+                <div className="flex justify-center md:w-auto flex-shrink-0 items-center w-full">
                   <Image
                     alt="logo"
                     height={10}
