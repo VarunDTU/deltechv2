@@ -1,16 +1,12 @@
-import React from "react";
 
-const Heading = ( { background, main } ) => {
+const Heading = ({ background, main }) => {
   return (
-
-    <div className="relative flex items-center justify-center max-w-screen">
-      <div className="top-0 left-[30vw] absolute opacity-60 text-[#E5E5E5] text-9xl font-bold uppercase font-urbanist">
-        {" "}
+    <div className="flex place-items-end justify-center w-full overflow-hidden">
+      <div className="relative mb-2 opacity-60 text-[#E5E5E5] text-5xl sm:text-6xl lg:text-8xl font-bold uppercase font-merriweather tracking-wide">
         {background}
       </div>
-      <div className="top-4 left-[41vw] absolute text-[#262626] text-[64px] font-bold drop-shadow-xl font-urbanist leading-[96px]">
+      <div className="absolute uppercase text-slate-700 text-3xl sm:text-4xl lg:text-6xl font-bold font-merriweather tracking-wider">
         {main}
-
       </div>
     </div>
   );
