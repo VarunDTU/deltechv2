@@ -47,6 +47,7 @@ export default function NewNavbar() {
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -57,7 +58,7 @@ export default function NewNavbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center font-bold w-full">
                   <img
-                    className="h-12 flex items-center justify-center"
+                    className="h-10 flex items-center justify-center"
                     src="./img/whiteDelTech.png"
                   ></img>
                 </div>
@@ -86,10 +87,11 @@ export default function NewNavbar() {
                 {user ? (
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="relative m-4 flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
+                        <span className="sr-only">Open user menu</span>
                         <img
-                          className="h-9 w-9 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={user.picture}
                           alt=""
                         />
@@ -114,7 +116,7 @@ export default function NewNavbar() {
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Manage(alpha)
+                              Manage(beta)
                             </a>
                           )}
                         </Menu.Item>
@@ -149,8 +151,7 @@ export default function NewNavbar() {
                   </Menu>
                 ) : (
                   <Link href="/api/auth/login">
-                    <button className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
-            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] m-3">
+                    <button className="outline rounded p-1 hover:outline-none hover:bg-white ">
                       Login
                     </button>
                   </Link>
