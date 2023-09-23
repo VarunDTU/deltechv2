@@ -26,7 +26,7 @@ const BlogsSection = async () => {
     query,
     context: {
       fetchOptions: {
-        next: { revalidate: 300 },
+        next: { revalidate: 200 },
       },
     },
   });
