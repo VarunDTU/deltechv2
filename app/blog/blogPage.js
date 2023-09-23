@@ -10,7 +10,7 @@ const BlogPage = async () => {
         title="Blogs & Articles"
         excerpt="DelTech MUN & DebSoc stands 56 Council Members and 60+ Diplomats strong. Ready to take onto ant challenge of the world. Reach out to us ! We are happy to discuss the pressing problems of the world even when the clock strikes midnight."
       />
-      <div className="flex flex-wrap justify-center items-center my-12 max-w-full mx-auto gap-20 py-5">
+      <div className="flex flex-wrap justify-center items-center my-12 max-w-full mx-auto gap-10 py-5">
         {blogs.map((blog, index) => (
           <BlogCard
             key={index}
