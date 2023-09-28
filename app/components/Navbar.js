@@ -22,7 +22,7 @@ function classNames(...classes) {
 export default function NewNavbar() {
   //const { user, error, isLoading } = useUser();
 
-  const [navbartop, setnavbartop] = useState(false);
+  const [navbartop, setnavbartop] = useState(true);
   const { data: user, status } = useSession();
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function NewNavbar() {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            "text-gray-300  hover:text-white",
+                            "text-white  hover:text-gray-300",
                             "rounded-md px-3 py-2 text-sm font-medium font-merriweather"
                           )}
                           aria-current={item.current ? "page" : undefined}

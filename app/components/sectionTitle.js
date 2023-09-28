@@ -1,6 +1,6 @@
 const SectionTitle = ({ title, excerpt }) => {
   return (
-    <div className="bg-[#040b23]/90 h-[50vh]">
+    <div className="bg-[#040b23] h-[50vh]">
       <div
         style={{ backgroundImage: `url(./img/section.png)` }}
         className="w-full h-full bg-center py-3 bg-cover flex flex-col justify-evenly"
