@@ -1,8 +1,9 @@
 "use client";
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import Image from "next/image";
 
-const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
+const committeeCard = ({ shortName, name, img, description, guide }) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -18,12 +19,12 @@ const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
        hover:shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
       >
         <div className="imgBox">
-          <img src={img}></img>
+          <Image src={img} alt="committee" width="225" height="225"></Image>
         </div>
         <div className="content flex items-center justify-between flex-col">
           <h2>{shortName}</h2>
           <h5>{name}</h5>
-          <p>{excerpt}</p>
+          <p>{description}</p>
           <button
             className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
@@ -76,7 +77,7 @@ const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
                   className="flex justify-between items-center text-2xl py-2 font-bold leading-6 text-gray-900"
                 >
                   <div className="flex items-center">
-                    United Nations Commission on the Status of Women
+                    {name}
                   </div>
                   <button
                     type="button"
@@ -103,8 +104,7 @@ const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-base text-center font-normal text-zinc-800 border-t pt-5 pb-8">
-                    Deliberation on the GST Act, With special emphasis on
-                    Jurisdictional issues.
+                    {description}
                   </p>
                   <div class="flex flex-col md:flex-row justify-center items-center gap-12">
                     <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
@@ -112,7 +112,8 @@ const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
                         <img
                           class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                           src="https://deltechmun.in/images/Committees/DhruvJain_UNGA_Chairperson.jpeg"
-                          alt=""
+                          alt="chair person"
+                          
                         />
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
@@ -130,7 +131,8 @@ const committeeCard = ({ shortName, name, img, excerpt, guide }) => {
                         <img
                           class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                           src="https://deltechmun.in/images/Committees/Pulkit%20Taneja_UNGA_Vice_Chair.jpeg"
-                          alt=""
+                          alt="chair person"
+                          
                         />
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>

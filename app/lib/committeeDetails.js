@@ -1,56 +1,68 @@
 export const committees = [
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/UNHRC.png",
+    shortName: "UNHRC",
+    name: "United Nations Human Rights Council",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/UNCSW.png",
+    shortName: "UNCSW",
+    name: "United Nations Commission ON The Status Of Women",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/UNGA.png",
+    shortName: "UNGA",
+    name: "United Nations General Assembly",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/UNOPS.png",
+    shortName: "UNOPS",
+    name: "United Nations Office For Project Services",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/3ARC.jpeg",
+    shortName: "3rd ARC",
+    name: "Third Administrative Reforms Commission",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/memberimg.png",
-    shortName: "DISC",
-    name: "Disarmament and International Security Committee",
-    excerpt: "excerpt",
-    description:
-      "Exploring the feasibility of observance of environmental norms in the drafting and implementation of agreements on disarmament and arms control.",
+    img: "/img/Committees/AIPPM.png",
+    shortName: "AIPPM",
+    name: "All India Political Parties Meet",
+    description: "Agenda Comming Soon",
     guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
   },
 ];
