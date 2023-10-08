@@ -1,4 +1,5 @@
 import SectionTitle from "../components/sectionTitle";
+import Slider from "./slider";
 
 const page = () => {
   return (
@@ -7,6 +8,7 @@ const page = () => {
         title="Our Sponsors"
         excerpt="DelTech MUN & DebSoc stands 56 Council Members and 60+ Diplomats strong. Ready to take onto ant challenge of the world. Reach out to us ! We are happy to discuss the pressing problems of the world even when the clock strikes midnight."
       />
+      <Slider></Slider>
     </div>
   );
 };
