@@ -37,7 +37,8 @@ const BlogCard = ({
         <Link
           className="py-3 px-4 text-sm font-merriweather truncate duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
-          href={`/blog/${slug}`}
+          // href={`/blog/${slug}`}
+          href={slug}
         >
           Read more
           <FaArrowRight className="ml-1 !inline" />

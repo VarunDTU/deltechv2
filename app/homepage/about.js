@@ -3,7 +3,10 @@ import Heading from "../components/Heading";
 const About = () => {
   return (
     <div className="gap-8 items-center py-16 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6">
-      <img className="m-auto w-3/5 " src="/img/deltech.png" alt="deltech" />
+      <video autoPlay loop muted preload="metadata" style={{ width: '500px', height: '500px' }}>
+        <source src="/munVideo.mp4" />
+      </video>
+      {/* <img className="m-auto w-3/5 " src="/img/deltech.png" alt="deltech" /> */}
       <div className="mt-4 md:mt-0">
         <div className="w-full relative py-10">
           <Heading background="about us" main="about us" />
