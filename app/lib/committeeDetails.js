@@ -44,7 +44,7 @@ export const committees = [
     viceChairPerson_img:"/img/Committees/chairperson"
   },
   {
-    img: "/img/Committees/3ARC.jpeg",
+    img: "/img/Committees/3ARC.png",
     shortName: "3rd ARC",
     name: "Third Administrative Reforms Commission",
     description: "Agenda Comming Soon",
