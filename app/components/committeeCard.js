@@ -2,6 +2,7 @@
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const committeeCard = ({ shortName, name, img, description, guide }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -147,14 +148,14 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                     </div>
                   </div>
                 </div>
-                <a href={guide} className="mt-6 flex justify-center">
+                <Link href="https://app.deltechmun.in" className="mt-6 flex justify-center">
                   <button
                     type="button"
                     className="inline-flex justify-center text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
                   >
-                    Guide
+                    Register Now
                   </button>
-                </a>
+                </Link>
               </div>
             </Transition.Child>
           </div>

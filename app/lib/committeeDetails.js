@@ -45,8 +45,8 @@ export const committees = [
   },
   {
     img: "/img/Committees/3ARC.png",
-    shortName: "3rd ARC",
-    name: "Third Administrative Reforms Commission",
+    shortName: "ARC (Third Report)",
+    name: "Administrative Reforms Commission (Third Report)",
     description: "Agenda Comming Soon",
     guide: "/",
     chairPerson:"",
