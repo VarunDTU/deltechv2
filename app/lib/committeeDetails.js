@@ -13,7 +13,7 @@ export const committees = [
   {
     img: "/img/Committees/UNCSW.png",
     shortName: "UNCSW",
-    name: "United Nations Commission ON The Status Of Women",
+    name: "United Nations Commission On The Status Of Women",
     description: "Agenda Comming Soon",
     guide: "/",
     chairPerson:"",

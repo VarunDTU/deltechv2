@@ -39,6 +39,8 @@ const Slider = () => {
             grabCursor={true}
             autoplay={{
               delay: 2000,
+              stopOnLastSlide: false,
+              disableOnInteraction: false,
             }}
             freeMode={true}
             navigation={{
@@ -67,7 +69,7 @@ const Slider = () => {
                 slidesPerView: 4,
               },
             }}
-            >
+          >
             {cards.map((card, index) => {
               return (
                 <SwiperSlide key={index}>
@@ -94,8 +96,8 @@ const Slider = () => {
               );
             })}
           </Swiper>
-          <div className="swiper-button-next m-5 bg-slate-500/40 p-8 rounded-full"></div>
-          <div className="swiper-button-prev m-5 bg-slate-500/40 p-8 rounded-full"></div>
+          <div className="md:swiper-button-next md:m-5 bg-slate-500/40 md:p-8 rounded-full"></div>
+          <div className="md:swiper-button-prev md:m-5 bg-slate-500/40 md:p-8 rounded-full"></div>
         </div>
       </div>
       {/* <div className="swiper-pagination pt-20"></div> */}
