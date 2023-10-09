@@ -63,8 +63,8 @@ export default function NewNavbar() {
                   <Image
                     alt="logo"
                     height={10}
-                    width={50}
-                    src="/img/whiteDelTech.png"
+                    width={150}
+                    src="/img/dlt_b_(white).png"
                     draggable="false"
                   />
                 </div>
