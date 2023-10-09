@@ -81,6 +81,7 @@ const Slider = () => {
                       <Image
                         className="inset-0 !h-48 !w-auto p-5 m-auto"
                         fill
+                        priority={true}
                         src={card.img}
                         alt="sponsor"
                       />
@@ -96,8 +97,8 @@ const Slider = () => {
               );
             })}
           </Swiper>
-          <div className="md:swiper-button-next md:m-5 bg-slate-500/40 md:p-8 rounded-full"></div>
-          <div className="md:swiper-button-prev md:m-5 bg-slate-500/40 md:p-8 rounded-full"></div>
+          <div className="swiper-button-next m-5 bg-slate-500/40 p-8 rounded-full"></div>
+          <div className="swiper-button-prev m-5 bg-slate-500/40 p-8 rounded-full"></div>
         </div>
       </div>
       {/* <div className="swiper-pagination pt-20"></div> */}
