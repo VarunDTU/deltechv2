@@ -3,7 +3,7 @@ import Heading from "../components/Heading";
 const About = () => {
   return (
     <div className="gap-8 items-center py-16 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6">
-      <video autoPlay loop muted preload="metadata" className="h-[600px] m-auto">
+      <video autoPlay loop muted preload="metadata" className="w-[400px] m-auto">
         <source src="/munVideo.mp4" />
       </video>
       <div className="mt-4 md:mt-0">
