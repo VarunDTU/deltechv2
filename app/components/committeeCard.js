@@ -27,7 +27,7 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
           <h5>{name}</h5>
           <p>{description}</p>
           <button
-            className="py-3 px-4 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            className="py-3 px-4 tracking-wide w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
             onClick={openModal}
           >
@@ -77,7 +77,7 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                   as="div" // Change 'as' to 'div'
                   className="flex justify-between items-center text-2xl py-2 font-bold leading-6 text-gray-900"
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center font-merriweather">
                     {name}
                   </div>
                   <button
@@ -104,7 +104,7 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                   </button>
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-base text-center font-normal text-zinc-800 border-t pt-5 pb-8">
+                  <p className="text-base text-center font-normal font-serif text-zinc-800 border-t pt-5 pb-8">
                     {description}
                   </p>
                   <div class="flex flex-col md:flex-row justify-center items-center gap-12">
@@ -119,10 +119,10 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class=" text-3xl pb-10 font-bold text-neutral-300">
+                        <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
                           Chairperson
                         </h1>
-                        <p class="mb-20 text-xl font-semibold italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           Aniket Basu
                         </p>
                       </div>
@@ -138,10 +138,10 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                       </div>
                       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                       <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class=" text-3xl pb-10 font-bold text-neutral-300">
+                        <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
                           Vice Chairperson
                         </h1>
-                        <p class="mb-20 text-xl font-semibold italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           Aniket Basu
                         </p>
                       </div>
@@ -151,7 +151,7 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                 <Link href="https://app.deltechmun.in" className="mt-6 flex justify-center">
                   <button
                     type="button"
-                    className="inline-flex justify-center text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
+                    className="font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
                   >
                     Register Now
                   </button>
