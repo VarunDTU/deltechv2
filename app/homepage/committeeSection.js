@@ -22,7 +22,7 @@ const committeeSection = () => {
           />
         ))}
       </div>
-      <Link
+      {/* <Link
         href="https://app.deltechmun.in"
       >
         <button
@@ -31,7 +31,7 @@ const committeeSection = () => {
         >
           Register Now
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 };
