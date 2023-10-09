@@ -1,7 +1,7 @@
 import HeroSection from "./homepage/herosection";
 import CommitteeSection from "./homepage/committeeSection";
 import About from "./homepage/about";
-import Venu from "./homepage/venu";
+import Venue from "./homepage/venue";
 
 export default function Page() {
   return (
@@ -9,7 +9,7 @@ export default function Page() {
       <HeroSection />
       <About />
       <CommitteeSection />
-      <Venu />
+      <Venue />
     </>
   );
 }

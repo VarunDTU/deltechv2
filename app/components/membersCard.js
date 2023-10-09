@@ -19,7 +19,7 @@ const MembersCard = ({ member, index, campus }) => {
       >
         <div className="flex flex-col justify-evenly items-center">
           <Image
-            src={member?.image}
+            src={member?.image || "/img/avatar.png"}
             alt="Member-img"
             width={150}
             height={150}

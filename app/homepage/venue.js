@@ -1,6 +1,6 @@
 import Heading from "../components/Heading"
 
-const Venu = () => {
+const Venue = () => {
   return (
     <div className="flex flex-col md:flex-row">
         <div className="w-full h-60 md:h-96">
@@ -14,7 +14,7 @@ const Venu = () => {
           ></iframe>
         </div>
         <div className=" text-slate-900 p-10 bg-white w-full ">
-        <Heading background="Venu" main="Venu" />
+        <Heading background="Venue" main="Venue" />
           <p className="text-md text-center lg:text-xl leading-relaxed py-10 font-serif">
             BR AUDITORIUM, Delhi Technological University (formerly DCE), Bawana
             Rd, Shahbad Daulatpur Village, Rohini, New Delhi, Delhi 110042
@@ -24,4 +24,4 @@ const Venu = () => {
   )
 }
 
-export default Venu
+export default Venue
