@@ -232,7 +232,7 @@ const junior_Council = [
     name: "Evam Bansal",
     category: "JC",
     position: "Juniour Council",
-    image: "/img/JC/Evam Bansal (JC).png",
+    image: "/img/JC/Evam Bansal (Jc).png",
     linkedin: "https://www.linkedin.com/in/evam-bansal-176211183",
   },
   {
