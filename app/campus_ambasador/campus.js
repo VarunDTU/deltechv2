@@ -87,7 +87,7 @@ const Campus = () => {
         </div>
       </div>
       <div className="justify-center items-center w-full py-10 flex">
-        <a href="https://forms.gle/KdMctqbH2dCU6mE26">
+        <a href="/">
           <div
             className="md:py-3 md:px-4 py-2 px-2.5 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
