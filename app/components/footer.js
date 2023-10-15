@@ -52,7 +52,7 @@ const Footer = () => {
             </h5>
             <div>
               <Link
-                href="/"
+                href="/payment_policy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-normal text-gray-400 text-sm hover:underline"
@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
             <div>
               <Link
-                href="/"
+                href="/terms_&_conditions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-normal text-gray-400 text-sm hover:underline"

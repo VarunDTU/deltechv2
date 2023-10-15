@@ -65,4 +65,15 @@ export const committees = [
     viceChairPerson:"",
     viceChairPerson_img:"/img/Committees/chairperson"
   },
+  {
+    img: "/img/Committees/ip.jpg",
+    shortName: "IP",
+    name: "International Press",
+    description: "Agenda Comming Soon",
+    guide: "/",
+    chairPerson:"",
+    chairPerson_img:"/img/Committees/chairperson/",
+    viceChairPerson:"",
+    viceChairPerson_img:"/img/Committees/chairperson"
+  },
 ];

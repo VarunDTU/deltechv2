@@ -88,9 +88,12 @@ const Campus = () => {
       </div>
       <div className="justify-center items-center w-full py-10 flex">
         <a href="https://forms.gle/KdMctqbH2dCU6mE26">
-          {/* <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+          <div
+            className="md:py-3 md:px-4 py-2 px-2.5 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
+          >
             Start you application
-          </button> */}
+          </div>
         </a>
       </div>
     </section>

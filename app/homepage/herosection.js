@@ -41,6 +41,7 @@ const HeroSection = () => {
         src={slides[currentIndex].url}
         alt="hero"
         fill
+        priority
         className="w-full absolute h-full bg-center bg-cover duration-500"
       />
       <div className="w-full h-full font-serif backdrop-blur-[1px] bg-blue-800/30 flex items-center justify-center font-semibold md:text-7xl sm:text-6xl text-5xl text-white uppercase text-center">
