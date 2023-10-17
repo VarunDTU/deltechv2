@@ -2,9 +2,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 const navigation = [
@@ -23,7 +23,7 @@ export default function NewNavbar() {
   //const { user, error, isLoading } = useUser();
 
   const [navbartop, setnavbartop] = useState(true);
-  const { data: user, status } = useSession();
+  // const { data: user, status } = useSession();
 
   useEffect(() => {
     const changeColor = () => {
@@ -90,7 +90,8 @@ export default function NewNavbar() {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
                 {/* Profile dropdown */}
-                {user ? (
+                {/* {user ? ( */}
+                {false ? (
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -170,14 +171,17 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  <button onClick={() => signIn()}>
+                  // <button onClick={() => signIn()}>
+                  <Link href="https://app.deltechmun.in/">
                     <div
                       className="md:py-3 md:px-4 py-2 px-2.5 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
                     >
-                      Login
+                      Register
+                      {/* Login */}
                     </div>
-                  </button>
+                  </Link>
+                  // </button>
                 )}
               </div>
             </div>
