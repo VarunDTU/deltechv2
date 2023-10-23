@@ -4,7 +4,7 @@ import { FreeMode, Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
-import "swiper/css/navigation";
+//import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,14 +23,15 @@ const Slider = () => {
   return (
     <div className="">
       <div className="flex items-center justify-center flex-col mb-16">
-        <div className="max-w-[100%] relative !mx-10">
+        <div className="max-w-[100%] ">
           {/* Swiper container */}
           <Swiper
             modules={[FreeMode, Navigation, Pagination, Autoplay]}
             loop={true}
+            // pagination={{ clickable: true }}
             grabCursor={true}
             autoplay={{
-              delay: 50000,
+              delay: 5000,
               stopOnLastSlide: false,
               disableOnInteraction: false,
             }}
@@ -39,6 +40,7 @@ const Slider = () => {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            
           >
             {cards.map((card, index) => {
               return (
@@ -50,14 +52,14 @@ const Slider = () => {
                     >
                       <Image
                         className="blur-sm bg-black fixed "
-                        fill={true}
+                        fill
                         priority={true}
                         src={card.img}
                         alt="sponsor"
                       />
 
                       <div className="relative flex flex-col gap-3 w-full h-full bg-blue-800/40 items-center justify-center">
-                        <h1 className=" text-center font-serif  text-white md:text-8xl text-6xl font-bold uppercase pt-8">
+                        <h1 className=" text-center font-serif  text-white md:text-7xl text-4xl font-bold uppercase pt-8">
                           {card?.title}
                         </h1>
                         {card?.title == "DELTECH MUN 2024" ? (
@@ -98,8 +100,10 @@ const Slider = () => {
               );
             })}
           </Swiper>
-          <div className="swiper-button-next m-5  p-8 rounded-full "></div>
-          <div className="swiper-button-prev m-5  p-8 rounded-full"></div>
+
+          <div className="swiper-button-next m-5 hidden w-0 overflow-hidden  p-8 rounded-full "></div>
+
+          <div className="swiper-button-prev m-5 hidden   p-8 rounded-full"></div>
         </div>
       </div>
       {/* <div className="swiper-pagination pt-20"></div> */}
