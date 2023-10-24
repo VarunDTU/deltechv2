@@ -67,28 +67,11 @@ const Slider = () => {
                             href="https://app.deltechmun.in/"
                             className="pt-10"
                           >
-                            <div class="relative group overflow-hidden px-6 h-12 border border-blue-500  rounded-lg flex space-x-2 items-center bg-gradient-to-r from-blue-500/20 to-blue-400 hover:to-blue-200/20">
-                              <span class="relative text-3xl font-serif uppercase  text-white">
+                            <span class="relative">
+                              <div className=" border font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0">
                                 Register
-                              </span>
-                              <div class="flex items-center -space-x-3 translate-x-3">
-                                <div class="w-5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-5 w-5 stroke-white -translate-x-2 transition duration-300 group-hover:translate-x-0"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
                               </div>
-                            </div>
+                            </span>
                           </Link>
                         ) : (
                           <div></div>
