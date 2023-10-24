@@ -60,13 +60,15 @@ export default function NewNavbar() {
               </div>
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                 <div className="flex justify-center md:w-auto flex-shrink-0 items-center w-full">
-                  <Image
-                    alt="logo"
-                    height={10}
-                    width={150}
-                    src="/img/dlt_b_(white).png"
-                    draggable="false"
-                  />
+                  <Link href="/">
+                    <Image
+                      alt="logo"
+                      height={10}
+                      width={150}
+                      src="/img/dlt_b_(white).png"
+                      draggable="false"
+                    />
+                  </Link>
                 </div>
                 <div className="flex justify-center items-center w-full">
                   <div className="hidden md:ml-6 md:block">
