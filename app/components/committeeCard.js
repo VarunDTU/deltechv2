@@ -119,40 +119,46 @@ const committeeCard = ({
                   <p className="text-base text-center font-normal font-serif text-zinc-800 border-t pt-5 pb-8">
                     {description}
                   </p>
-                  <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+                  <div className="flex flex-col md:flex-row justify-center items-center gap-12">
                     {person1 && (
-                      <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
-                        <div class="h-96 w-72">
-                          <div
-                            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                      <div className="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
+                        <div className="h-96 w-72">
+                          <Image
                             src={person1_img}
-                          />
+                            alt="img"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                            fill
+                            priority={true}
+                          ></Image>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-                        <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                          <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                        <div className="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
+                          <h1 className=" text-3xl pb-10 font-bold font-serif text-neutral-300">
                             {person1_designation}
                           </h1>
-                          <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <p className="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             {person1}
                           </p>
                         </div>
                       </div>
                     )}
                     {person2 && (
-                      <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
-                        <div class="h-96 w-72">
-                          <img
-                            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                      <div className="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
+                        <div className="h-96 w-72">
+                        <Image
                             src={person2_img}
-                          />
+                            alt="img"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                            fill
+                            priority={true}
+                          ></Image>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-                        <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                          <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                        <div className="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
+                          <h1 className=" text-3xl pb-10 font-bold font-serif text-neutral-300">
                             {person2_designation}
                           </h1>
-                          <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <p className="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             {person2}
                           </p>
                         </div>
