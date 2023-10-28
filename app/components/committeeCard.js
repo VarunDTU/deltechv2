@@ -4,7 +4,19 @@ import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const committeeCard = ({ shortName, name, img, description, guide }) => {
+const committeeCard = ({
+  shortName,
+  name,
+  img,
+  description,
+  guide,
+  person1,
+  person1_designation,
+  person1_img,
+  person2,
+  person2_designation,
+  person2_img,
+}) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -108,47 +120,50 @@ const committeeCard = ({ shortName, name, img, description, guide }) => {
                     {description}
                   </p>
                   <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-                    <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
-                      <div class="h-96 w-72">
-                        <img
-                          class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                          src="https://deltechmun.in/images/Committees/DhruvJain_UNGA_Chairperson.jpeg"
-                          alt="chair person"
-                          
-                        />
+                    {person1 && (
+                      <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
+                        <div class="h-96 w-72">
+                          <div
+                            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                            src={person1_img}
+                          />
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
+                          <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                            {person1_designation}
+                          </h1>
+                          <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            {person1}
+                          </p>
+                        </div>
                       </div>
-                      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-                      <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
-                          Chairperson
-                        </h1>
-                        <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          Aniket Basu
-                        </p>
+                    )}
+                    {person2 && (
+                      <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
+                        <div class="h-96 w-72">
+                          <img
+                            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                            src={person2_img}
+                          />
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
+                          <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                            {person2_designation}
+                          </h1>
+                          <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            {person2}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
-                      <div class="h-96 w-72">
-                        <img
-                          class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                          src="https://deltechmun.in/images/Committees/Pulkit%20Taneja_UNGA_Vice_Chair.jpeg"
-                          alt="chair person"
-                          
-                        />
-                      </div>
-                      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-                      <div class="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                        <h1 class=" text-3xl pb-10 font-bold font-serif text-neutral-300">
-                          Vice Chairperson
-                        </h1>
-                        <p class="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          Aniket Basu
-                        </p>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
-                <Link href="https://app.deltechmun.in" className="mt-6 flex justify-center">
+                <Link
+                  href="https://app.deltechmun.in"
+                  className="mt-6 flex justify-center"
+                >
                   <button
                     type="button"
                     className="font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
