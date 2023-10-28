@@ -133,10 +133,10 @@ const committeeCard = ({
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                          <h1 className=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                          <h1 className=" text-3xl py-5 font-bold font-serif text-neutral-300">
                             {person1_designation}
                           </h1>
-                          <p className="mb-20 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <p className="mb-10 text-xl font-semibold font-merriweather italic text-neutral-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             {person1}
                           </p>
                         </div>
@@ -145,7 +145,7 @@ const committeeCard = ({
                     {person2 && (
                       <div className="group relative cursor-pointer flex flex-col items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-xl">
                         <div className="h-96 w-72">
-                        <Image
+                          <Image
                             src={person2_img}
                             alt="img"
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
@@ -155,10 +155,10 @@ const committeeCard = ({
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-end px-4 text-center transition-all duration-500 group-hover:translate-y-0">
-                          <h1 className=" text-3xl pb-10 font-bold font-serif text-neutral-300">
+                          <h1 className=" text-3xl py-5 font-bold font-serif text-neutral-300">
                             {person2_designation}
                           </h1>
-                          <p className="mb-20 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <p className="mb-10 text-xl font-semibold font-merriweather italic text-neutral-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             {person2}
                           </p>
                         </div>
