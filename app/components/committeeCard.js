@@ -37,7 +37,7 @@ const committeeCard = ({
         <div className="content flex items-center justify-between flex-col">
           <h2>{shortName}</h2>
           <h5>{name}</h5>
-          <p>{description}</p>
+          <p className="text-ellipsis line-clamp-2">{description}</p>
           <button
             className="py-3 px-4 tracking-wide w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
