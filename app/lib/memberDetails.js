@@ -134,13 +134,12 @@ const senior_Council = [
     linkedin: "https://www.linkedin.com/in/vidusi-saxena-004776231",
   },
   {
-    name: "Ankit Kumar",
+    name: "Ishank Dabas",
     category: "Sc",
-    position: "Director Of External Affairs",
-    image: "/img/SC/Ankit Kumar.webp",
-    linkedin: "https://www.linkedin.com/in/ankit-kumar-1784ab231",
+    position: "Director of Logistics",
+    image: "/img/SC/ishank dabas.jpg",
+    linkedin: "https://www.linkedin.com/in/ishankdabas?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
-
   {
     name: "Mohit",
     category: "Sc",
