@@ -175,13 +175,10 @@ export default function NewNavbar() {
                 ) : (
                   // <button onClick={() => signIn()}>
                   <Link href="https://app.deltechmun.in/">
-                    <div
-                      className="md:py-3 md:px-4 py-2 px-2.5 w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
-            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff] "
-                    >
+                  <button class="px-3 py-2 rounded-xl cursor-pointer md:px-6 md:py-3 bg-[#4262FF] text-[#f1f1f1]  md:rounded-3xl hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather text-[14px] md:tracking-wider">
                       Register
                       {/* Login */}
-                    </div>
+                    </button>
                   </Link>
                   // </button>
                 )}

@@ -40,7 +40,6 @@ const Slider = () => {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
-            
           >
             {cards.map((card, index) => {
               return (
@@ -68,9 +67,10 @@ const Slider = () => {
                             className="pt-10"
                           >
                             <span class="relative">
-                              <div className=" border font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0">
+                              <button class="rounded-xl cursor-pointer px-8 py-4 bg-[#4262FF] text-[#f1f1f1] hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather uppercase font-bold tracking-widest">
                                 Register
-                              </div>
+                                {/* Login */}
+                              </button>
                             </span>
                           </Link>
                         ) : (

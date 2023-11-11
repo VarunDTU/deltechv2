@@ -112,8 +112,3 @@ const MemberPage = () => {
 };
 
 export default MemberPage;
-//blue-900/20
-//blue-700
-//#CCCCCC
-//  blue-400
-// ring-white ring-opacity-60 ring-offset-2 ring-offset-[#3366cc] focus:ring-1
