@@ -1,7 +1,7 @@
 import "./globals.css";
-import NewNavbar from "./components/Navbar";
-import Footer from "./components/footer";
-import Provider from "./components/provider";
+import Navbar from "./homepage/Navbar";
+import Footer from "./homepage/footer";
+import Provider from "./components/utils/provider";
 
 export const metadata = {
   title: "DelTech MUN",
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Provider>
-          <NewNavbar></NewNavbar>
+          <Navbar></Navbar>
           {children}
           <Footer></Footer>
         </Provider>

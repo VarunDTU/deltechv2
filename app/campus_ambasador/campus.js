@@ -4,15 +4,14 @@ const Campus = () => {
       className="text-slate-900 bg-transparent leading-relaxed "
       id="home"
     >
-      <div className="h-20 bg-slate-900"></div>
       <div className="md:flex md:flex-row items-center md:h-screen px-5">
         <div>
           <h1 className="text-5xl md:py-10 pt-28 md:text-7xl font-bold">
             DelTech MUN Campus Ambassador Programme
           </h1>
         </div>
-        <div className="md:w-screen -z-10 w-80 md:py-10">
-          <img className="h-1/4" src="/img/campusStu.jpg"></img>
+        <div className="md:w-3/5  -z-10 w-80 md:py-20">
+          <img src="/img/campusStu.jpg"></img>
         </div>
       </div>
       <div className="pt-5 bg-slate-300 rounded-t-3xl px-8" id="aboutus">

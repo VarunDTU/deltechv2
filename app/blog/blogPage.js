@@ -1,9 +1,9 @@
-import { client, blogsQuery } from "@/app/lib/graphqlClient";
-import BlogCard from "@/app/components/BlogCard";
-import SectionTitle from "../components/sectionTitle";
+import service from "@/app/lib/hygraphServices"
+import BlogCard from "@/app/components/cards/BlogCard";
+import SectionTitle from "../components/heading/sectionTitle";
 
 const BlogPage = async () => {
-  const { blogs } = await client.request(blogsQuery);
+  const {blogs} = await service.getBlogs();
   return (
     <>
       <SectionTitle
@@ -23,7 +23,8 @@ const BlogPage = async () => {
               blog.author.photo?.url ||
               "/img/avatar.png"
             }
-            slug={blog.readMoreLink}
+            // slug={blog.readMoreLink}
+            slug={blog.slug}
           />
         ))}
       </div>

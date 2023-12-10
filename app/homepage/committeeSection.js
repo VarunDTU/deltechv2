@@ -1,6 +1,6 @@
-import CommitteeCard from "@/app/components/committeeCard";
-import { committees } from "@/app/lib/committeeDetails";
-import Heading from "../components/Heading";
+import CommitteeCard from "@/app/components/cards/committeeCard";
+import { committees } from "@/app/lib/Society Details/committeeDetails";
+import Heading from "../components/heading/Heading";
 import Link from "next/link";
 
 const committeeSection = () => {

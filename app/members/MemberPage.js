@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
-import MembersCard from "../components/membersCard";
+import MembersCard from "../components/cards/membersCard";
 import {
   senior_Council,
   junior_Council,
   east_Campus,
   administrative_Council,
-} from "../lib/memberDetails";
+} from "../lib/Society Details/memberDetails";
 
 //headlessUi
 import { Tab } from "@headlessui/react";
-import SectionTitle from "../components/sectionTitle";
+import SectionTitle from "../components/heading/sectionTitle";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

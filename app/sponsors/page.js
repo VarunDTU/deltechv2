@@ -1,4 +1,4 @@
-import SectionTitle from "../components/sectionTitle";
+import SectionTitle from "../components/heading/sectionTitle";
 import Slider from "./slider";
 
 const page = () => {

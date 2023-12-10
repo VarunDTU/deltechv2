@@ -2,10 +2,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-// import { signIn } from "next-auth/react";
 import Image from "next/image";
+import {usePathname} from "next/navigation";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -19,18 +19,17 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NewNavbar() {
-  //const { user, error, isLoading } = useUser();
-
+export default function Navbar() {
   const [navbartop, setnavbartop] = useState(true);
-  // const { data: user, status } = useSession();
-
+  const { data: session } = useSession();
+  const pathname=usePathname();
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 90) {
         setnavbartop(false);
       } else {
         setnavbartop(true);
+        if(pathname=="/campus_ambasador"){setnavbartop(false);}
       }
     };
 
@@ -92,19 +91,18 @@ export default function NewNavbar() {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
                 {/* Profile dropdown */}
-                {/* {user ? ( */}
-                {false ? (
+                {session ? (
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
-                        <Image
+                        {/* <Image
                           width={8}
                           height={8}
                           className="h-8 w-8 rounded-full"
-                          src={user?.user.image}
+                          src={session?.session.image}
                           alt="avatar"
-                        />
+                        /> */}ses
                       </Menu.Button>
                     </div>
                     <Transition
@@ -116,33 +114,33 @@ export default function NewNavbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {/* <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/manage/blogs"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Manage(alpha)
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/blog/publish"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              CreateBlog
-                            </a>
-                          )}
-                        </Menu.Item> */}
+                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                             {({ active }) => (
+                               <a
+                                 href="/profile/blogs"
+                                 className={classNames(
+                                   active ? "bg-gray-100" : "",
+                                   "block px-4 py-2 text-sm text-gray-700"
+                                 )}
+                               >
+                                 Profile (alpha)
+                               </a>
+                             )}
+                           </Menu.Item>
+                           <Menu.Item>
+                             {({ active }) => (
+                               <a
+                                 href="/profile/blogs/createBlog"
+                                 className={classNames(
+                                   active ? "bg-gray-100" : "",
+                                   "block px-4 py-2 text-sm text-gray-700"
+                                 )}
+                               >
+                                 Create Blog
+                               </a>
+                             )}
+                           </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <Link
@@ -150,7 +148,7 @@ export default function NewNavbar() {
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
-                              )}
+                                )}
                             >
                               Registration <br /> (opening soon)
                             </Link>
@@ -159,7 +157,7 @@ export default function NewNavbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                              href="/api/auth/logout"
+                              href="/api/auth/signout?callbackUrl=/"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
@@ -173,14 +171,17 @@ export default function NewNavbar() {
                     </Transition>
                   </Menu>
                 ) : (
-                  // <button onClick={() => signIn()}>
-                  <Link href="https://app.deltechmun.in/">
-                  <button class="px-3 py-2 rounded-xl cursor-pointer md:px-6 md:py-3 bg-[#4262FF] text-[#f1f1f1]  md:rounded-3xl hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather text-[14px] md:tracking-wider">
-                      Register
-                      {/* Login */}
-                    </button>
-                  </Link>
-                  // </button>
+                  <button
+            className="py-3 px-4 tracking-wide w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+            hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
+            // onClick={setLogin}
+          >
+            {session ? (
+            <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
+          ) : (
+            <Link href="/api/auth/signin">Login</Link>
+          )}
+          </button>
                 )}
               </div>
             </div>
