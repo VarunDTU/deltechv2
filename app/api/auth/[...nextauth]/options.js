@@ -1,13 +1,12 @@
 import GoogleProvider from "next-auth/providers/google";
+import adminDetails from "@/app/lib/Society Details/adminDetails"
 
-let userRole
+let userRole = "user";
 export const options = {
   providers: [
     GoogleProvider({
       profile(profile) {
-        console.log("Profile Google: ", profile);
-        if(profile.email=="vaibhav2438@gmail.com"){userRole = "admin";}else{userRole = "user";}
-        console.log("Profile Google: ", userRole);
+        if(adminDetails.filter((email)=>(profile.email==email))){userRole = "admin";}
         return {
           ...profile,
           id: profile.sub,

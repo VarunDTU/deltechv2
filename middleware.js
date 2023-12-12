@@ -7,7 +7,7 @@ export default withAuth(
     console.log(req.nextauth.token.role);
 
     if (
-        req.nextUrl.pathname.startsWith("/profile/blogs/createBlog") &&
+      req.nextUrl.pathname.startsWith("/profile","/profile/createBlog") &&
       req.nextauth.token.role != "admin"
     ) {
       return NextResponse.rewrite(new URL("/Denied", req.url));
@@ -20,4 +20,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: ["/profile/blogs/createBlog"] };
+export const config = { matcher: ["/profile","/profile/createBlog"] };

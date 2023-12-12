@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -21,15 +21,17 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [navbartop, setnavbartop] = useState(true);
-  const { data: session } = useSession();
-  const pathname=usePathname();
+  const { data: session, status } = useSession();
+  const pathname = usePathname();
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 90) {
         setnavbartop(false);
       } else {
         setnavbartop(true);
-        if(pathname=="/campus_ambasador"){setnavbartop(false);}
+        if (pathname == "/campus_ambasador") {
+          setnavbartop(false);
+        }
       }
     };
 
@@ -96,13 +98,11 @@ export default function Navbar() {
                     <div>
                       <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
-                        {/* <Image
-                          width={8}
-                          height={8}
+                        <img
                           className="h-8 w-8 rounded-full"
-                          src={session?.session.image}
+                          src="/img/avatar.png"
                           alt="avatar"
-                        /> */}ses
+                        />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -114,74 +114,76 @@ export default function Navbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                             {({ active }) => (
-                               <a
-                                 href="/profile/blogs"
-                                 className={classNames(
-                                   active ? "bg-gray-100" : "",
-                                   "block px-4 py-2 text-sm text-gray-700"
-                                 )}
-                               >
-                                 Profile (alpha)
-                               </a>
-                             )}
-                           </Menu.Item>
-                           <Menu.Item>
-                             {({ active }) => (
-                               <a
-                                 href="/profile/blogs/createBlog"
-                                 className={classNames(
-                                   active ? "bg-gray-100" : "",
-                                   "block px-4 py-2 text-sm text-gray-700"
-                                 )}
-                               >
-                                 Create Blog
-                               </a>
-                             )}
-                           </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href="/register"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                      {status === "authenticated" && (
+                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href={`/profile`}
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
                                 )}
-                            >
-                              Registration <br /> (opening soon)
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href="/api/auth/signout?callbackUrl=/"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Sign out
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
+                              >
+                                Profile (alpha)
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href={`/profile/createBlog`}
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Create Blog
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                href="/register"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Registration <br /> (opening soon)
+                              </Link>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                href="/api/auth/signout?callbackUrl=/"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Sign out
+                              </Link>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      )}
                     </Transition>
                   </Menu>
                 ) : (
                   <button
-            className="py-3 px-4 tracking-wide w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
+                    className="py-3 px-4 tracking-wide w-fit duration-500 text-[#1341EC] border-2 border-[#1341EC] rounded-xl
             hover:bg-gradient-to-t from-[#1341EC] to-[#142e8a] hover:text-[#fff]"
-            // onClick={setLogin}
-          >
-            {session ? (
-            <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
-          ) : (
-            <Link href="/api/auth/signin">Login</Link>
-          )}
-          </button>
+                    // onClick={setLogin}
+                  >
+                    {session ? (
+                      <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
+                    ) : (
+                      <Link href="/api/auth/signin">Login</Link>
+                    )}
+                  </button>
                 )}
               </div>
             </div>

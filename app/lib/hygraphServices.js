@@ -12,6 +12,7 @@ export class Service {
           blogs {
             author {
               name
+              email
               photo {
                 url
               }
@@ -40,6 +41,7 @@ export class Service {
           blog(where: { slug: "${slug}" }) {
             author {
               name
+              email
               bio
               photo {
                 url
@@ -63,55 +65,128 @@ export class Service {
       return false;
     }
   }
+  async getTargetAuthor(email) {
+    try {
+      const query = gql`
+        query MyQuery {
+          author(where: { email: "${email}" }) {
+            bio
+            email
+            name
+            photo {
+              url
+            }
+            posts {
+              excerpt
+              thumbnail {
+                url
+              }
+              updatedAt
+              title
+            }
+          }
+        }
+      `;
+
+      return await this.client.request(query);
+    } catch (error) {
+      console.log("Hygraph serive :: getTargetAuthor :: error", error);
+      return false;
+    }
+  }
 
   async deleteBlog(slug) {
     try {
-      await this.databases.deleteDocument(
-        conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
-        slug
-      );
-      return true;
+      const mutation = gql`
+      mutation MyMutation {
+        deleteBlog(where: {slug: "${slug}"}) {
+          id
+        }
+      }
+`;
+      return await this.client.request(mutation);
     } catch (error) {
       console.log("Hygraph serive :: deleteBlog :: error", error);
       return false;
     }
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createBlog(title, slug, content, thumbnail) {
     try {
-      return await this.databases.createDocument(
-        conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
-        slug,
-        {
-          title,
-          content,
-          featuredImage,
-          status,
-          userId,
+      const mutation = gql`
+      mutation MyMutation {
+        deleteBlog(where: {slug: "${slug}"}) {
+          id
         }
-      );
+      }
+`;
+      return await this.client.request(mutation);
     } catch (error) {
-      console.log("Appwrite serive :: createPost :: error", error);
+      console.log("Hygraph serive :: createBlog :: error", error);
+    }
+  }
+  async updateBlog(title, slug, content, thumbnail) {
+    try {
+      const mutation = gql`
+      mutation MyMutation {
+        deleteBlog(where: {slug: "${slug}"}) {
+          id
+        }
+      }
+`;
+      return await this.client.request(mutation);
+    } catch (error) {
+      console.log("Hygraph serive :: updateBlog :: error", error);
     }
   }
 
-  async updatePost(slug, { title, content, featuredImage, status }) {
+  async createAuthor(email, name) {
     try {
-      return await this.databases.updateDocument(
-        conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
-        slug,
-        {
-          title,
-          content,
-          featuredImage,
-          status,
-        }
-      );
+      const mutation = gql`
+      mutation MyMutation {
+        createAuthor(
+        data: {name: "${name}", email: "${email}", bio: "DelTech MUN pride member, ready to take onto ant challenge of the world."}
+      ) {
+        id
+        bio
+        email
+        name
+      }
+      publishAuthor(where: {email: "${email}"}, to: PUBLISHED) {
+        id
+      }
+    }
+      `;
+      return await this.client.request(mutation);
     } catch (error) {
-      console.log("Appwrite serive :: updatePost :: error", error);
+      console.log("Hygraph serive :: createAuthor :: error", error);
+    }
+  }
+  
+  // ${formValue.dp.name ? "photo: {create: {fileName:"+ `"${formValue.dp.name}"`+", "+" handle: "+`"${formValue.dp.name}"`+"}}" :""}
+  async updateProfile(email, formValue) {
+    try {
+      const mutation = gql`
+      mutation MyMutation {
+        updateAuthor(
+          data: {
+            ${formValue.name ? "name:"+ `"${formValue.name}"` +", " : ``} 
+            ${formValue.bio ? "bio:"+ `"${formValue.bio}"` +", ": ``} 
+          }
+          where: {email: "${email}"}
+        ) {
+          id
+          name
+          bio
+        }
+        publishAuthor(where: {email: "${email}"}, to: PUBLISHED) {
+          id
+        }
+      }
+`;
+      return await this.client.request(mutation);
+    } catch (error) {
+      console.log("Hygraph serive :: updateAuthor :: error", error);
     }
   }
 }

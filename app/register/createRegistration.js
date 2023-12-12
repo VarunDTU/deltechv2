@@ -1,10 +1,7 @@
 import { GraphQLClient, gql } from "graphql-request";
 
-export const client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH, {
-  headers: {
-    authorization: `Bearer ${process.env.NEXT_PUBLIC_MUTATION_TOKEN}`,
-  },
-});
+export const client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH
+);
 
 
 const obj = `
