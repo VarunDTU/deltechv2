@@ -20,7 +20,7 @@ export default async function Page() {
         <div className="flex w-[calc(100vw-230px)]">
           <img
             className="w-[120px] min-w-[120px] rounded-full"
-            src={`${author?.photo || "/img/avatar.png"}`}
+            src={`${author?.photo?.url || "/img/avatar.png"}`}
           />
 
           <div className="ml-5 w-full">

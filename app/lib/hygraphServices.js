@@ -162,23 +162,28 @@ export class Service {
       console.log("Hygraph serive :: createAuthor :: error", error);
     }
   }
-  
-  // ${formValue.dp.name ? "photo: {create: {fileName:"+ `"${formValue.dp.name}"`+", "+" handle: "+`"${formValue.dp.name}"`+"}}" :""}
+
   async updateProfile(email, formValue) {
     try {
+      const {publishAsset} = await this.uploadAsset(formValue.dp);
       const mutation = gql`
       mutation MyMutation {
         updateAuthor(
           data: {
-            ${formValue.name ? "name:"+ `"${formValue.name}"` +", " : ``} 
-            ${formValue.bio ? "bio:"+ `"${formValue.bio}"` +", ": ``} 
+            ${formValue.name ? "name:" + `"${formValue.name}"` + ", " : ``} 
+            ${formValue.bio ? "bio:" + `"${formValue.bio}"` + ", " : ``} 
+            ${publishAsset ? "photo: {connect: {id:"+ `"${publishAsset.id}"`+"}}" : ``}
           }
           where: {email: "${email}"}
         ) {
           id
           name
           bio
+          photo {
+            url
+          }
         }
+        
         publishAuthor(where: {email: "${email}"}, to: PUBLISHED) {
           id
         }
@@ -187,6 +192,33 @@ export class Service {
       return await this.client.request(mutation);
     } catch (error) {
       console.log("Hygraph serive :: updateAuthor :: error", error);
+    }
+  }
+  async uploadAsset(file) {
+    try {
+      const form = new FormData();
+      form.set("fileUpload", file);
+      let response = await fetch(
+        "https://api-ap-south-1.hygraph.com/v2/cll17xuiw27b801uj95n22vxn/master/upload",
+        {method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_TOKEN}`,
+          },
+          body: form,
+        }
+      );
+      response = await response.json();
+
+      const mutation = gql`
+      mutation MyMutation {
+        publishAsset(where: {id: "${response.id}"}, to: PUBLISHED) {
+          id
+        }
+      }
+`;
+      return await this.client.request(mutation);
+    } catch (error) {
+      console.log("Hygraph serive :: uploadAsset :: error", error);
     }
   }
 }

@@ -12,6 +12,7 @@ const EditProfile = ({author}) => {
   function openModal() {
     setIsOpen(true);
   }
+
   const submitData = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -117,7 +118,6 @@ const EditProfile = ({author}) => {
                         name="dp"
                         id="dp"
                         accept="image/jpg, image/png, image/jpeg, image/webp"
-                        // required
                         className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                         autoComplete="off"
                       />
