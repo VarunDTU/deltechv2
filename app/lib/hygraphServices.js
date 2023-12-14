@@ -19,7 +19,7 @@ export class Service {
             }
             createdAt
             excerpt
-            slug
+            id
             thumbnail {
               url
             }
@@ -34,11 +34,11 @@ export class Service {
     }
   }
 
-  async getTargetBlog(slug) {
+  async getTargetBlog(id) {
     try {
       const query = gql`
         query MyQuery {
-          blog(where: { slug: "${slug}" }) {
+          blog(where: { id: "${id}" }) {
             author {
               name
               email
@@ -95,11 +95,11 @@ export class Service {
     }
   }
 
-  async deleteBlog(slug) {
+  async deleteBlog(id) {
     try {
       const mutation = gql`
       mutation MyMutation {
-        deleteBlog(where: {slug: "${slug}"}) {
+        deleteBlog(where: {id: "${id}"}) {
           id
         }
       }
@@ -110,12 +110,31 @@ export class Service {
       return false;
     }
   }
+//   {
+//     children:[
+//        {
+//           type:"paragraph",
+//           children:[
+//              {
+//                 text:"Hygraph boasts an impressive collection of "
+//              }
+//           ]
+//        }
+//     ]
+//  }
 
-  async createBlog(title, slug, content, thumbnail) {
+  async createBlog(email, formValue) {
     try {
+      console.log(JSON.stringify(formValue.content));
+      // const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
+      // thumbnail: {connect: {id: "${publishAsset.id}"}}}
       const mutation = gql`
       mutation MyMutation {
-        deleteBlog(where: {slug: "${slug}"}) {
+        createBlog(
+          data: {title: "${formValue.title}", excerpt: "${formValue.excerpt}", 
+          author: {connect: {email: "${email}"}}, 
+          content:${formValue.content} 
+        }) {
           id
         }
       }
@@ -125,11 +144,15 @@ export class Service {
       console.log("Hygraph serive :: createBlog :: error", error);
     }
   }
-  async updateBlog(title, slug, content, thumbnail) {
+  async updateBlog(id, formValue) {
     try {
+      const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
       const mutation = gql`
       mutation MyMutation {
-        deleteBlog(where: {slug: "${slug}"}) {
+        updateBlog(
+          data: {content: "${formValue.content}", excerpt: "${formValue.excerpt}", thumbnail: {connect: {id: "${publishAsset.id}"}}, title: "${formValue.title}"}
+          where: {id: "${id}"}
+        ) {
           id
         }
       }
@@ -165,14 +188,18 @@ export class Service {
 
   async updateProfile(email, formValue) {
     try {
-      const {publishAsset} = await this.uploadAsset(formValue.dp);
+      const { publishAsset } = await this.uploadAsset(formValue.dp);
       const mutation = gql`
       mutation MyMutation {
         updateAuthor(
           data: {
             ${formValue.name ? "name:" + `"${formValue.name}"` + ", " : ``} 
             ${formValue.bio ? "bio:" + `"${formValue.bio}"` + ", " : ``} 
-            ${publishAsset ? "photo: {connect: {id:"+ `"${publishAsset.id}"`+"}}" : ``}
+            ${
+              publishAsset
+                ? "photo: {connect: {id:" + `"${publishAsset.id}"` + "}}"
+                : ``
+            }
           }
           where: {email: "${email}"}
         ) {
@@ -200,7 +227,8 @@ export class Service {
       form.set("fileUpload", file);
       let response = await fetch(
         "https://api-ap-south-1.hygraph.com/v2/cll17xuiw27b801uj95n22vxn/master/upload",
-        {method: "POST",
+        {
+          method: "POST",
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_TOKEN}`,
           },

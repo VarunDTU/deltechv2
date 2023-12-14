@@ -23,8 +23,7 @@ const BlogPage = async () => {
               blog.author.photo?.url ||
               "/img/avatar.png"
             }
-            // slug={blog.readMoreLink}
-            slug={blog.slug}
+            slug={blog.id}
           />
         ))}
       </div>
