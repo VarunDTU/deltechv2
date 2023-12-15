@@ -1,32 +1,15 @@
 "use client";
-import html2json from "html2json"; 
-import dynamic from "next/dynamic";
 import service from "../lib/hygraphServices";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const EditorBlock = dynamic(() => import("@/app/components/richTextEditor/editor"), {
+  ssr: false,
+});
 
 const BlogForm = (props) => {
   const { data: session, status } = useSession();
-  const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
-  const config = {
-    placeholder: "Blog Description",
-    readonly: false,
-    toolbar: true,
-    spellcheck: true,
-    language: "en",
-    toolbarButtonSize: "medium",
-    toolbarAdaptive: false,
-    showCharsCounter: true,
-    showWordsCounter: true,
-    showXPathInStatusbar: false,
-    askBeforePasteHTML: true,
-    askBeforePasteFromWord: true,
-    uploader: {
-      insertImageAsBase64URI: true,
-    },
-    width: 800,
-    height: 842,
-  };
-  
+  const [data, setData] = useState(null);
   const submitData = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -34,17 +17,16 @@ const BlogForm = (props) => {
       title: formData.get("title"),
       thumbnail: formData.get("thumbnail"), 
       excerpt: formData.get("excerpt"),
-      content: formData.get("content"),
+      description: data,
     };
-    // formValue.content = parseHTML(formValue.content);
-    // console.log(formValue.content);
-    if (props.id == null) {
-      const resp = await service.createBlog(session.user.email, formValue);
-      console.log(resp);
-    } else {
-      const resp = await service.updateBlog(props.id, formValue);
-      console.log(resp);
-    }
+    console.log(JSON.stringify(formValue.description));
+    // if (props.id == null) {
+    //   const resp = await service.createBlog(session.user.email, formValue);
+    //   console.log(resp);
+    // } else {
+    //   const resp = await service.updateBlog(props.id, formValue);
+    //   console.log(resp);
+    // }
   };
   return (
     <div className="text-base mt-2 text-center font-normal font-serif text-zinc-800 border-t pt-5 pb-8">
@@ -59,7 +41,7 @@ const BlogForm = (props) => {
             id="title"
             placeholder="Title"
             className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-            required
+            // required
             autoComplete="off"
           />
         </div>
@@ -72,7 +54,7 @@ const BlogForm = (props) => {
             name="thumbnail"
             id="thumbnail"
             className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-            required
+            // required
             autoComplete="off"
           />
         </div>
@@ -86,7 +68,7 @@ const BlogForm = (props) => {
             id="excerpt"
             placeholder="caption for blog"
             className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-            required
+            // required
             autoComplete="off"
           />
         </div>
@@ -94,12 +76,8 @@ const BlogForm = (props) => {
           <label htmlFor="content" className="block mb-2 text-sm font-medium">
             Content
           </label>
-          <JoditEditor
-            name="content"
-            id="content"
-            config={config}
-            className="sm:text-sm rounded-lg  block w-full p-2.5 placeholder-gray-400 text-black"
-          />
+          <EditorBlock
+          data={data} onChange={setData} holder="editorjs-container" />
         </div>
         <div className="mt-6 flex justify-center">
           <button

@@ -49,9 +49,7 @@ export class Service {
             }
             createdAt
             title
-            content {
-              raw
-            }
+            description
             thumbnail {
               url
             }
@@ -110,49 +108,50 @@ export class Service {
       return false;
     }
   }
-//   {
-//     children:[
-//        {
-//           type:"paragraph",
-//           children:[
-//              {
-//                 text:"Hygraph boasts an impressive collection of "
-//              }
-//           ]
-//        }
-//     ]
-//  }
 
   async createBlog(email, formValue) {
     try {
-      console.log(JSON.stringify(formValue.content));
-      // const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
-      // thumbnail: {connect: {id: "${publishAsset.id}"}}}
+      const originalString = JSON.stringify(formValue.description);
+      const correctedString = JSON.stringify(originalString, null, 1);
+      const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
       const mutation = gql`
       mutation MyMutation {
         createBlog(
           data: {title: "${formValue.title}", excerpt: "${formValue.excerpt}", 
           author: {connect: {email: "${email}"}}, 
-          content:${formValue.content} 
+          thumbnail: {connect: {id: "${publishAsset.id}"}},
+          description: ${correctedString}
         }) {
           id
         }
       }
 `;
       return await this.client.request(mutation);
+      // const id=await this.client.request(mutation);
+      // return await this.client.request(gql`
+      // mutation MyMutation {
+      //   publishBlog(where: {id: "${id}"}, to: PUBLISHED) {
+      //     id
+      //   }
+      // }
+      // `);
     } catch (error) {
       console.log("Hygraph serive :: createBlog :: error", error);
     }
   }
   async updateBlog(id, formValue) {
     try {
+      const originalString = JSON.stringify(formValue.description);
+      const correctedString = JSON.stringify(originalString, null, 1);
       const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
       const mutation = gql`
       mutation MyMutation {
         updateBlog(
-          data: {content: "${formValue.content}", excerpt: "${formValue.excerpt}", thumbnail: {connect: {id: "${publishAsset.id}"}}, title: "${formValue.title}"}
-          where: {id: "${id}"}
-        ) {
+          data: {title: "${formValue.title}", excerpt: "${formValue.excerpt}", 
+          author: {connect: {email: "${email}"}}, 
+          thumbnail: {connect: {id: "${publishAsset.id}"}},
+          description: ${correctedString}
+        }, where: {id: "${id}"}) {
           id
         }
       }

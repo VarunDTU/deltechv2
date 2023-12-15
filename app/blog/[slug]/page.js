@@ -1,6 +1,6 @@
 import React from "react";
 import service from "@/app/lib/hygraphServices";
-import { RichText } from '@graphcms/rich-text-react-renderer';
+import EditorJsRenderer from "@/app/components/richTextEditor/editorJsRenderer";
 
 export default async function Page({ params }) {
   const { blog } = await service.getTargetBlog(params.slug);
@@ -35,7 +35,7 @@ export default async function Page({ params }) {
               </p>
             </div>
             <div className="text-gray-100">
-            <RichText content={blog.content.raw.children} />
+            <EditorJsRenderer data={blog.description} />
               
             </div>
           </div>
