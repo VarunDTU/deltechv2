@@ -1,7 +1,7 @@
 //./components/Editor
 import React, { memo, useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
-// import { EDITOR_JS_TOOLS } from "./editorTools";
+import { EDITOR_JS_TOOLS } from "./editorTools";
 
 
 const EditorBlock = ({ data, onChange, holder }) => {
@@ -14,7 +14,7 @@ const EditorBlock = ({ data, onChange, holder }) => {
     if (!ref.current) {
       const editor = new EditorJS({
         holder: holder,
-        // tools: EDITOR_JS_TOOLS,
+        tools: EDITOR_JS_TOOLS,
         data,
         async onChange(api, event) {
           const data = await api.saver.save();

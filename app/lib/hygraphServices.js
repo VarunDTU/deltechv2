@@ -3,7 +3,11 @@ import { GraphQLClient, gql } from "graphql-request";
 export class Service {
   client;
   constructor() {
-    this.client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH);
+    this.client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH,{
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_TOKEN}`,
+      },
+    });
   }
   async getBlogs() {
     try {
@@ -126,15 +130,15 @@ export class Service {
         }
       }
 `;
-      return await this.client.request(mutation);
-      // const id=await this.client.request(mutation);
-      // return await this.client.request(gql`
-      // mutation MyMutation {
-      //   publishBlog(where: {id: "${id}"}, to: PUBLISHED) {
-      //     id
-      //   }
-      // }
-      // `);
+      // return await this.client.request(mutation);
+      const id=await this.client.request(mutation);
+      return await this.client.request(gql`
+      mutation MyMutation {
+        publishBlog(where: {id: "${id}"}, to: PUBLISHED) {
+          id
+        }
+      }
+      `);
     } catch (error) {
       console.log("Hygraph serive :: createBlog :: error", error);
     }
@@ -225,7 +229,7 @@ export class Service {
       const form = new FormData();
       form.set("fileUpload", file);
       let response = await fetch(
-        "https://api-ap-south-1.hygraph.com/v2/cll17xuiw27b801uj95n22vxn/master/upload",
+        `${process.env.NEXT_PUBLIC_API_HYGRAPH}/upload`,
         {
           method: "POST",
           headers: {

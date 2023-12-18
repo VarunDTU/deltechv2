@@ -12,7 +12,7 @@ const EditProfile = ({author}) => {
   function openModal() {
     setIsOpen(true);
   }
-
+  
   const submitData = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -24,6 +24,7 @@ const EditProfile = ({author}) => {
     console.log(formValue);
     const resp = await service.updateProfile(author.email, formValue);
     console.log(resp);
+    closeModal();
   };
   return (
     <>

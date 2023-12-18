@@ -125,7 +125,7 @@ export default function Navbar() {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Profile (alpha)
+                                Profile
                               </a>
                             )}
                           </Menu.Item>
@@ -142,7 +142,7 @@ export default function Navbar() {
                               </a>
                             )}
                           </Menu.Item>
-                          <Menu.Item>
+                          {/* <Menu.Item>
                             {({ active }) => (
                               <Link
                                 href="/register"
@@ -154,7 +154,7 @@ export default function Navbar() {
                                 Registration <br /> (opening soon)
                               </Link>
                             )}
-                          </Menu.Item>
+                          </Menu.Item> */}
                           <Menu.Item>
                             {({ active }) => (
                               <Link

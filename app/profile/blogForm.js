@@ -3,6 +3,8 @@ import service from "../lib/hygraphServices";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from 'next/navigation';
+import EditorJsRenderer from "../components/richTextEditor/editorJsRenderer";
 const EditorBlock = dynamic(
   () => import("@/app/components/richTextEditor/editor"),
   {
@@ -11,6 +13,7 @@ const EditorBlock = dynamic(
 );
 
 const BlogForm = (props) => {
+  const { push } = useRouter();
   const { data: session, status } = useSession();
   const [data, setData] = useState(null);
   const submitData = async (event) => {
@@ -23,16 +26,18 @@ const BlogForm = (props) => {
       description: data,
     };
     console.log(JSON.stringify(formValue.description));
-    // if (props.id == null) {
-    //   const resp = await service.createBlog(session.user.email, formValue);
-    //   console.log(resp);
-    // } else {
-    //   const resp = await service.updateBlog(props.id, formValue);
-    //   console.log(resp);
-    // }
+    if (props.id == null) {
+      const {createBlog} = await service.createBlog(session.user.email, formValue);
+      console.log(createBlog);
+      push(`/blog/${createBlog.id}`);
+    } else {
+      const {updateBlog} = await service.updateBlog(props.id, formValue);
+      console.log(updateBlog);
+      push(`/blog/${updateBlog.id}`);
+    }
   };
   return (
-    <div className="text-base mt-2 text-center font-normal font-serif text-zinc-800 border-t pb-8 bg-gray-900 pt-20">
+    <div className="text-base text-center font-normal font-serif text-zinc-800 border-t pb-8 bg-gray-900 pt-20">
       <div className="max-w-5xl mx-auto bg-slate-800 mt-10 rounded-lg shadow-md overflow-hidden">
         {/* Box container starts */}
         <form
@@ -83,7 +88,7 @@ const BlogForm = (props) => {
               name="excerpt"
               id="excerpt"
               placeholder="caption for blog"
-              className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+              className="border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
               // required
               autoComplete="off"
             />
@@ -95,12 +100,16 @@ const BlogForm = (props) => {
             >
               Content
             </label>
-            <EditorBlock
-              data={data}
-              onChange={setData}
-              holder="editorjs-container"
-              className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-            />
+            <div className="border sm:text-sm rounded-lg block w-full p-2.5 bg-white border-gray-600">
+              <EditorBlock
+                data={data}
+                onChange={setData}
+                holder="editorjs-container"
+              />
+            </div>
+            {/* <div className="text-gray-100">
+              <EditorJsRenderer data={data} className="text-sm" />
+            </div> */}
           </div>
           <div className="mt-6 flex justify-center">
             <button
