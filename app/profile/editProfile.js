@@ -22,9 +22,9 @@ const EditProfile = ({author}) => {
       bio: formData.get("bio"),
     };
     console.log(formValue);
+    closeModal();
     const resp = await service.updateProfile(author.email, formValue);
     console.log(resp);
-    closeModal();
   };
   return (
     <>
