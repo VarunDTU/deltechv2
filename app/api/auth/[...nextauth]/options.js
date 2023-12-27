@@ -6,11 +6,13 @@ export const options = {
   providers: [
     GoogleProvider({
       profile(profile) {
-        if(adminDetails.filter((email)=>(profile.email==email))){userRole = "admin";}
+        const isAdmin = adminDetails.some(
+          (email) => email === profile.email
+        );
         return {
           ...profile,
           id: profile.sub,
-          role: userRole,
+          role: isAdmin ? "admin" : "user",
         };
       },
       clientId: process.env.GOOGLE_ID,
