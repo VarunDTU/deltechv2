@@ -3,7 +3,7 @@ import { GraphQLClient, gql } from "graphql-request";
 export class Service {
   client;
   constructor() {
-    this.client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH,{
+    this.client = new GraphQLClient(process.env.NEXT_PUBLIC_API_HYGRAPH, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_TOKEN}`,
       },
@@ -13,12 +13,18 @@ export class Service {
     try {
       const query = gql`
         query MyQuery {
-          blogs {
+          blogs(orderBy: createdAt_DESC) {
             author {
               name
               email
               photo {
                 url
+              }
+            }
+            categories {
+              ... on Category {
+                id
+                name
               }
             }
             createdAt
@@ -124,14 +130,19 @@ export class Service {
           data: {title: "${formValue.title}", excerpt: "${formValue.excerpt}", 
           author: {connect: {email: "${email}"}}, 
           thumbnail: {connect: {id: "${publishAsset.id}"}},
-          description: ${correctedString}
+          description: ${correctedString},
+          categories: {connect: ${formValue.categories
+            .map((category) => `{Category: {name: "${category.name}"}}`)
+            .join(",")}
+            {Category: {name: "${formValue.categories}"}}
+          }
         }) {
           id
         }
       }
 `;
       // return await this.client.request(mutation);
-      const id=await this.client.request(mutation);
+      const id = await this.client.request(mutation);
       return await this.client.request(gql`
       mutation MyMutation {
         publishBlog(where: {id: "${id}"}, to: PUBLISHED) {
@@ -151,8 +162,15 @@ export class Service {
       const mutation = gql`
       mutation MyMutation {
         updateBlog(
-          data: {title: "${formValue.title}", excerpt: "${formValue.excerpt}", 
+          data: {title: "${formValue.title}", 
+          excerpt: "${formValue.excerpt}", 
           author: {connect: {email: "${email}"}}, 
+          categories: {connect: ${formValue.categories
+            .map(
+              (category) => `{Category: {where: {name: "${category.name}"}}}`
+            )
+            .join(",")}
+          },
           thumbnail: {connect: {id: "${publishAsset.id}"}},
           description: ${correctedString}
         }, where: {id: "${id}"}) {
