@@ -90,7 +90,7 @@ const BlogPage = () => {
               {Categories.map((category, i) => (
                 <Tab.Panel key={i} className="mt-16 max-w-screen-xl mx-auto">
                   <div className="flex flex-wrap justify-center items-center my-12 max-w-full mx-auto gap-10 py-5">
-                    {filterBlogsByCategory(category.slug).map((blog, index) => (
+                    {filterBlogsByCategory(category.id).map((blog, index) => (
                       <BlogCard
                         key={index}
                         title={blog.title}

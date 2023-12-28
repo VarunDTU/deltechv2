@@ -3,6 +3,7 @@ import Navbar from "./homepage/Navbar";
 import Footer from "./homepage/footer";
 import Provider from "./components/utils/provider";
 import ClientOnly from "./components/utils/clientOnly";
+import { Toaster } from "@/app/components/ui/toaster";
 
 export const metadata = {
   title: "DelTech MUN",
@@ -21,8 +22,9 @@ export default function RootLayout({ children }) {
           <ClientOnly>
             <Navbar></Navbar>
           </ClientOnly>
-          {children}
+          <main>{children}</main>
           <Footer></Footer>
+          <Toaster />
         </Provider>
       </body>
     </html>
