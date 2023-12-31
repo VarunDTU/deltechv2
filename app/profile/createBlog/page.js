@@ -1,4 +1,4 @@
-import BlogForm from "../blogForm";
+import BlogForm from "./blogForm";
 export default function Page() {
   return (
     <div>

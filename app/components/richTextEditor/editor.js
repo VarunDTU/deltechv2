@@ -1,10 +1,8 @@
-//./components/Editor
-import React, { memo, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import { EDITOR_JS_TOOLS } from "./editorTools";
 
-
-const EditorBlock = ({ data, onChange, holder }) => {
+export default function Editor({ data, onChange, holder }) {
   //add a reference to editor
   const ref = useRef();
 
@@ -32,8 +30,5 @@ const EditorBlock = ({ data, onChange, holder }) => {
     };
   }, []);
 
-
-  return <div id={holder} />;
-};
-
-export default memo(EditorBlock);
+  return <div id={holder} className="prose max-w-full" />;
+}

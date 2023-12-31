@@ -131,21 +131,19 @@ export class Service {
           author: {connect: {email: "${email}"}}, 
           thumbnail: {connect: {id: "${publishAsset.id}"}},
           description: ${correctedString},
-          categories: {connect: ${formValue.categories
-            .map((category) => `{Category: {name: "${category.name}"}}`)
+          categories: {connect:[ ${formValue.category
+            .map((category) => `{Category: {name: "${category}"}}`)
             .join(",")}
-            {Category: {name: "${formValue.categories}"}}
-          }
+          ]}
         }) {
           id
         }
       }
-`;
-      // return await this.client.request(mutation);
-      const id = await this.client.request(mutation);
+      `;
+      const { createBlog } = await this.client.request(mutation);
       return await this.client.request(gql`
       mutation MyMutation {
-        publishBlog(where: {id: "${id}"}, to: PUBLISHED) {
+        publishBlog(where: {id: "${createBlog.id}"}, to: PUBLISHED) {
           id
         }
       }
@@ -154,35 +152,35 @@ export class Service {
       console.log("Hygraph serive :: createBlog :: error", error);
     }
   }
-  async updateBlog(id, formValue) {
-    try {
-      const originalString = JSON.stringify(formValue.description);
-      const correctedString = JSON.stringify(originalString, null, 1);
-      const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
-      const mutation = gql`
-      mutation MyMutation {
-        updateBlog(
-          data: {title: "${formValue.title}", 
-          excerpt: "${formValue.excerpt}", 
-          author: {connect: {email: "${email}"}}, 
-          categories: {connect: ${formValue.categories
-            .map(
-              (category) => `{Category: {where: {name: "${category.name}"}}}`
-            )
-            .join(",")}
-          },
-          thumbnail: {connect: {id: "${publishAsset.id}"}},
-          description: ${correctedString}
-        }, where: {id: "${id}"}) {
-          id
-        }
-      }
-`;
-      return await this.client.request(mutation);
-    } catch (error) {
-      console.log("Hygraph serive :: updateBlog :: error", error);
-    }
-  }
+  //   async updateBlog(id, formValue) {
+  //     try {
+  //       const originalString = JSON.stringify(formValue.description);
+  //       const correctedString = JSON.stringify(originalString, null, 1);
+  //       const { publishAsset } = await this.uploadAsset(formValue.thumbnail);
+  //       const mutation = gql`
+  //       mutation MyMutation {
+  //         updateBlog(
+  //           data: {title: "${formValue.title}",
+  //           excerpt: "${formValue.excerpt}",
+  //           author: {connect: {email: "${email}"}},
+  //           categories: {connect: ${formValue.categories
+  //             .map(
+  //               (category) => `{Category: {where: {name: "${category.name}"}}}`
+  //             )
+  //             .join(",")}
+  //           },
+  //           thumbnail: {connect: {id: "${publishAsset.id}"}},
+  //           description: ${correctedString}
+  //         }, where: {id: "${id}"}) {
+  //           id
+  //         }
+  //       }
+  // `;
+  //       return await this.client.request(mutation);
+  //     } catch (error) {
+  //       console.log("Hygraph serive :: updateBlog :: error", error);
+  //     }
+  //   }
 
   async createAuthor(email, name) {
     try {

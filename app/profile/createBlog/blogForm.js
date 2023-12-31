@@ -1,16 +1,16 @@
 "use client";
-import service from "../lib/hygraphServices";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import service from "../../lib/hygraphServices";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/app/components/ui/use-toast";
-import { Label } from "../components/ui/label";
-import { Input } from "../components/ui/input";
-import { Button } from "../components/ui/button";
+import { Label } from "../../components/ui/label";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
 import { Checkbox } from "@/app/components/ui/checkbox";
 import { Categories } from "@/app/lib/blogCategories";
-// import EditorJsRenderer from "../components/richTextEditor/editorJsRenderer";
 
 const EditorBlock = dynamic(
   () => import("@/app/components/richTextEditor/editor"),
@@ -19,7 +19,8 @@ const EditorBlock = dynamic(
   }
 );
 
-const BlogForm = (props) => {
+const BlogForm = () => {
+  const [isLoading, setLoading] = useState(false);
   const { toast } = useToast();
   const { push } = useRouter();
   const { data: session, status } = useSession();
@@ -27,6 +28,7 @@ const BlogForm = (props) => {
 
   const submitData = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(event.target);
     const formValue = {
@@ -38,28 +40,19 @@ const BlogForm = (props) => {
       ),
       description: data,
     };
-    console.log(JSON.stringify(formValue));
+    console.log(formValue);
 
-    if (props.id == null) {
-      const { createBlog } = await service.createBlog(
-        session.user.email,
-        formValue
-      );
-      console.log(createBlog);
-      toast({
-        title: "Successfully Created!",
-        description: "Blog has been created.",
-      });
-      push(`/blog/${createBlog.id}`);
-    } else {
-      const { updateBlog } = await service.updateBlog(props.id, formValue);
-      console.log(updateBlog);
-      toast({
-        title: "Successfully Updated!",
-        description: "Blog has been updated.",
-      });
-      push(`/blog/${updateBlog.id}`);
-    }
+    const { publishBlog } = await service.createBlog(
+      session.user.email,
+      formValue
+    );
+    console.log(publishBlog);
+    toast({
+      title: "Successfully Created!",
+      description: "Blog has been created.",
+    });
+    push(`/blog/${publishBlog.id}`);
+    setLoading(false);
   };
 
   return (
@@ -129,9 +122,14 @@ const BlogForm = (props) => {
             </div>
           </div>
           <div className="mt-6 flex justify-center">
-            <Button type="submit">
-              {props.id == null ? "Create" : "Update"}
-            </Button>
+            {isLoading ? (
+              <Button disabled>
+                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </Button>
+            ) : (
+              <Button type="submit">Create</Button>
+            )}
           </div>
         </form>
       </div>

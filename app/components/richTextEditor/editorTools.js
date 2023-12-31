@@ -1,11 +1,11 @@
 import Delimiter from "@editorjs/delimiter";
-import Embed from "@editorjs/embed";
-import Link from "@editorjs/link";
 import List from "@editorjs/list";
 import Quote from "@editorjs/quote";
-import Marker from '@editorjs/marker'
 import Header from "@editorjs/header"
 import Paragraph from "@editorjs/paragraph";
+import Marker from '@editorjs/marker'
+// import Embed from "@editorjs/embed";
+// import Link from "@editorjs/link";
 // import Image from "@editorjs/image";
 // import InlineCode from "@editorjs/inline-code";
 // import SimpleImage from "@editorjs/simple-image";
@@ -31,12 +31,12 @@ export const EDITOR_JS_TOOLS = {
         'Enter blog description',
     },
   },
-  marker: Marker,
-  embed: Embed,
-  link: Link,
   list: List,
   quote: Quote,
   delimiter: Delimiter,
+  marker: Marker,
+  // embed: Embed,
+  // link: Link,
   // checklist: CheckList,
   // image: Image,
   // code: Code,
