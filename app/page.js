@@ -8,8 +8,8 @@ export default function Page() {
   return (
     <>
       <HeroSection />
-      <About />
       <ImportantUpdate />
+      <About />
       <CommitteeSection />
       <Venue />
     </>
