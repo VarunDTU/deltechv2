@@ -13,7 +13,7 @@ const ImportantUpdate = () => {
 
   return (
     <>
-      <div className="h-80 bg-[#040b23] bg my-10 py-5 text-gray-300 mx-auto overflow-y-scroll no-scrollbar max-w-4xl rounded-3xl font-merriweather">
+      <div className="h-80 bg-[#040b23] bg mt-20 mb-8 py-5 text-gray-300 mx-auto overflow-y-scroll no-scrollbar max-w-4xl rounded-3xl font-merriweather">
         <h1 className="text-center text-[36px] font-bold tracking-wider mb-4">
           Important Updates
         </h1>
