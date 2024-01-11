@@ -35,7 +35,7 @@ export default async function Page({ params }) {
                 className="h-60 sm:h-96 self-center dark:bg-gray-500 rounded"
               />
             </div>
-            <div className="text-gray-100 font-sans">
+            <div className="text-gray-100 prose font-sans">
               <EditorJsRenderer data={blog?.description} className="text-sm" />
             </div>
           </div>

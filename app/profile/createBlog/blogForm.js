@@ -113,7 +113,7 @@ const BlogForm = () => {
           <div className="grid w-full max-w-md items-center gap-2">
             <Label htmlFor="content">Content</Label>
 
-            <div className="border sm:text-sm rounded-lg block w-full bg-gray-50  text-gray-900 p-1.5 px-4 border-slate-950 ">
+            <div className="border prose sm:text-sm rounded-lg block w-full bg-gray-50  text-gray-900 p-1.5 px-4 border-slate-950 ">
               <EditorBlock
                 data={data}
                 onChange={setData}
