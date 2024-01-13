@@ -1,1 +1,1 @@
-export default ["vaibhav2438@gmail.com", "vaibhavgupta_ep21b11_50@dtu.ac.in", "evambansal@gmail.com"];
+export default ["vaibhav2438@gmail.com", "evambansal_mc22a14_04@dtu.ac.in", "evambansal@gmail.com"];
