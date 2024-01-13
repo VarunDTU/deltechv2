@@ -1,4 +1,4 @@
 export const Categories = [
-  { name: "Economic", id: "economic" },
-  { name: "Health", id: "health" },
+  { name: "International", id: "international" },
+  { name: "National", id: "national" },
 ];
