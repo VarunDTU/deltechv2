@@ -1,7 +1,6 @@
 "use client";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import service from "../../lib/hygraphServices";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
@@ -19,11 +18,10 @@ const EditorBlock = dynamic(
   }
 );
 
-const BlogForm = () => {
+const BlogForm = ({email}) => {
   const [isLoading, setLoading] = useState(false);
   const { toast } = useToast();
   const { push } = useRouter();
-  const { data: session, status } = useSession();
   const [data, setData] = useState(null);
 
   const submitData = async (event) => {
@@ -43,7 +41,7 @@ const BlogForm = () => {
     console.log(formValue);
 
     const { publishBlog } = await service.createBlog(
-      session.user.email,
+      email,
       formValue
     );
     console.log(publishBlog);
