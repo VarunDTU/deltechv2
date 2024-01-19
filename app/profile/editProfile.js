@@ -4,7 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { BsPencil } from "react-icons/bs";
 import service from "../lib/hygraphServices";
 
-const EditProfile = ({author}) => {
+const EditProfile = ({ author }) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -12,7 +12,7 @@ const EditProfile = ({author}) => {
   function openModal() {
     setIsOpen(true);
   }
-  
+
   const submitData = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -28,12 +28,20 @@ const EditProfile = ({author}) => {
   };
   return (
     <>
-      <button
+      {/* <button
         onClick={openModal}
-        className="flex item-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-gray-100"
+        className="flex item-center rounded-md py-1.5 px-3.5 mt-3 text-[15px] font-semibold border hover:bg-blue-500"
       >
         <BsPencil className="mt-0.5 mr-1" size="18" />
         <span>Edit profile</span>
+      </button> */}
+      <button
+        className=" border-none outline-none text-white bg-gradient-to-r from-[#269af7] to-[#8e59ff] text-[14px] shadow-btn none transition-all ease-in duration-200 py-3 px-4 mr-4 hover:shadow-hover rounded-[50px]"
+        onClick={openModal}
+      >
+        <div className="flex gap-1 items-center">
+          <BsPencil className="mt-0.5 mr-1" size="18" /> Edit Profile
+        </div>
       </button>
       {/* Model */}
       <Transition appear show={isOpen} as={Fragment}>
@@ -179,3 +187,4 @@ const EditProfile = ({author}) => {
 };
 
 export default EditProfile;
+// <BsPencil className="mt-0.5 mr-1" size="18" />
