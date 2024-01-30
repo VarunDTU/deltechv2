@@ -2,12 +2,17 @@ const ImportantUpdate = () => {
   const updates = [
     {
       id: "update-1",
-      content: "THE CONFERENCE IS POSTPONED INDEFINITELY UNTIL FURTHER NOTICE.",
+      content: "New dates of the conference are 20-21 April.",
     },
     {
       id: "update-2",
       content:
-        "Everyone has been refunded with the delegate fees if someone hasn’t received the refund, kindly contact the secretariat.",
+        "Round 1 of Registration has resumed.",
+    },
+    {
+      id: "update-3",
+      content:
+        "Delegates are requested to register again, and will be allotted portfolios soon.",
     },
   ];
 
