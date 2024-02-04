@@ -68,7 +68,7 @@ export const committees = [
     img: "/img/Committees/AIPPM.png",
     shortName: "AIPPM",
     name: "All India Political Parties Meet",
-    description: "To discuss and Strategize ways to address the ongoing Manipur crisis.",
+    description: "Discussing Electoral Reforms with special emphasis on political donations & submission of false affidavits by candidates.",
     guide: "/",
     person1: "Mr. Akshat Mohan Awasthi",
     person1_designation: "Moderator",
