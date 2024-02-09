@@ -1,12 +1,12 @@
+import Link from "next/link";
 import {
-  FaPhoneAlt,
-  FaLinkedinIn,
   FaEnvelope,
   FaFacebookF,
-  FaYoutube,
   FaInstagram,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaYoutube,
 } from "react-icons/fa";
-import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -23,13 +23,13 @@ const Footer = () => {
                   Administrative Affairs
                 </p>
                 <h5 className="mb-2 font-bold text-sm text-white">
-                  Arin Singhal
+                  Hemabh Gupta
                 </h5>
                 <div className="font-normal text-sm flex flex-row items-center  text-neutral-300">
                   <span>
                     <FaPhoneAlt size={15} />
                   </span>
-                  <span className="ml-2">9407084266</span>
+                  <span className="ml-2">9560995939</span>
                 </div>
               </div>
               <div className="p-4 w-52  h-24 mb-5 flex flex-col justify-evenly items-center rounded-lg border  bg-gray-800 border-gray-700 hover:bg-gray-700">
