@@ -3,8 +3,7 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import ClientOnly from "../components/utils/clientOnly";
 import EditProfile from "./editProfile";
-import { AiOutlineDelete } from "react-icons/ai";
-// import Link from 'next/link'
+import DeleteBlogButton from "./deleteBlogButton";
 // import { AiOutlineEdit } from "react-icons/ai";
 
 export default async function Page() {
@@ -18,9 +17,6 @@ export default async function Page() {
     author = createAuthor;
   }
 
-  const name = (string) =>
-    `${string.slice(0, 1).toUpperCase()}${string.slice(1).toLowerCase()}`;
-    
   return (
     <>
       <div className="font-merriweather">
@@ -35,7 +31,7 @@ export default async function Page() {
         {/* pc only */}
         <div className="hidden ml-[420px] mt-2 md:flex items-center gap-3">
           <div className="mr-2">
-            <p className="text-[24px] truncate">{name(author?.name)}</p>
+            <p className="text-[24px] truncate">{author?.name}</p>
             <p className="text-[14px] truncate text-gray-400">
               {author?.email}
             </p>
@@ -58,9 +54,7 @@ export default async function Page() {
       {/* mobile only */}
       <div className="mt-20 flex items-center font-merriweather sm:hidden">
         <div className="mx-auto">
-          <p className="text-[20px] truncate text-center">
-            {name(author?.name)}
-          </p>
+          <p className="text-[20px] truncate text-center">{author?.name}</p>
           <p className="text-[13px] truncate text-gray-400 text-center">
             {author?.email}
           </p>
@@ -82,7 +76,7 @@ export default async function Page() {
             Blogs
           </li>
         </ul>
-        {author.posts ==[] ? (
+        {author.posts.length>0 ? (
           <div className="divide-y divide-gray-100">
             {author.posts.map((blog, index) => (
               <div
@@ -91,20 +85,16 @@ export default async function Page() {
               >
                 <img className="rounded-t-lg" src={blog.thumbnail.url} alt="" />
                 <div class="p-5">
-                  <h3 className=" mb-2 text-[#999] ">
-                    {blog.createdAt.slice(0, 10)}
-                  </h3>
                   <h1 className=" mb-4 text-3xl text-[#333] font-semibold">
                     {blog.title}
                   </h1>
                   <p className="font-normal text-gray-700 mb-4 tracking-wider">
                     {blog.excerpt}
                   </p>
-                  <button className=" border-none outline-none text-white bg-gradient-to-r from-[#269af7] to-[#8e59ff] text-[14px] shadow-btn none transition-all ease-in duration-200 py-3 px-4 mr-4 hover:shadow-hover rounded-[50px]">
-                    <div className="flex gap-1 items-center">
-                      <AiOutlineDelete size={15} /> Delete
-                    </div>
-                  </button>
+                  <ClientOnly>
+                    <DeleteBlogButton blogId={blog.id} />
+                  </ClientOnly>
+
                   {/* <button className=" border-none outline-none text-white bg-gradient-to-r from-[#269af7] to-[#8e59ff] text-[14px] shadow-btn none transition-all ease-in duration-200 py-3 px-5 hover:shadow-hover rounded-[50px]">
                   <div className="flex gap-1 items-center">
                     <AiOutlineEdit size={15} /> Edit
@@ -124,12 +114,6 @@ export default async function Page() {
                 <p class="mb-6 font-light text-gray-500 400 md:text-lg">
                   Get Started, with your first blog.
                 </p>
-                {/* <Link
-                  href="/profile/createBlog"
-                  class="text-white bg-[#2563eb] hover:bg-[#2563eb] focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
-                >
-                  Create Blog
-                </Link> */}
               </div>
             </div>
           </section>
@@ -139,8 +123,3 @@ export default async function Page() {
     </>
   );
 }
-
-//
-// w-[calc(100vw-230px)]
-//
-// justify-center

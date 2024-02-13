@@ -85,6 +85,7 @@ export class Service {
               url
             }
             posts {
+              id
               excerpt
               thumbnail {
                 url
@@ -208,7 +209,7 @@ export class Service {
   async updateProfile(email, formValue) {
     try {
       let id = "";
-      if (formValue.dp.name != "" ) {
+      if (formValue.dp.name != "") {
         const { publishAsset } = await this.uploadAsset(formValue.dp);
         id = publishAsset.id;
       }

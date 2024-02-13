@@ -7,6 +7,7 @@ import service from "../lib/hygraphServices";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import { useToast } from "@/app/components/ui/use-toast";
 
 const EditProfile = ({ author }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ const EditProfile = ({ author }) => {
   function openModal() {
     setIsOpen(true);
   }
+  const { toast } = useToast();
 
   const [isLoading, setLoading] = useState(false);
 
@@ -28,11 +30,24 @@ const EditProfile = ({ author }) => {
       name: formData.get("name"),
       bio: formData.get("bio"),
     };
-    console.log(formValue.dp);
-    const resp = await service.updateProfile(author.email, formValue);
-    console.log(resp);
-    setLoading(false);
-    closeModal();
+    if (
+      formValue.dp.name == "" &&
+      formValue.name == "" &&
+      formValue.bio == ""
+    ) {
+      toast({
+        title: "All inputs are blank!",
+        description: "Atleast fill one input.",
+      });
+    } else {
+      const resp = await service.updateProfile(author.email, formValue);
+      setLoading(false);
+      closeModal();
+      toast({
+        title: "Successfully Updated!",
+        description: "Profile has been Updated.",
+      });
+    }
   };
   return (
     <>
@@ -110,7 +125,7 @@ const EditProfile = ({ author }) => {
                     </svg>
                   </button>
                 </Dialog.Title>
-                
+
                 <form onSubmit={submitData} className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="name" className="text-right">

@@ -3,9 +3,7 @@ const editorJsHtml = require("editorjs-html");
 const EditorJsToHtml = editorJsHtml();
 
 const EditorJsRenderer = ({ data }) => {
-  try {
-    data = JSON.parse(data);
-  } catch {}
+  data = JSON.parse(data);
   const html = EditorJsToHtml.parse(data);
   return (
     <>
