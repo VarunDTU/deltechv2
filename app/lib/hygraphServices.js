@@ -207,18 +207,20 @@ export class Service {
 
   async updateProfile(email, formValue) {
     try {
-      const { publishAsset } = await this.uploadAsset(formValue.dp);
+      let id = "";
+      if (formValue.dp.name != "" ) {
+        const { publishAsset } = await this.uploadAsset(formValue.dp);
+        id = publishAsset.id;
+      }
       const mutation = gql`
       mutation MyMutation {
         updateAuthor(
           data: {
-            ${formValue.name ? "name:" + `"${formValue.name}"` + ", " : ``} 
-            ${formValue.bio ? "bio:" + `"${formValue.bio}"` + ", " : ``} 
             ${
-              publishAsset
-                ? "photo: {connect: {id:" + `"${publishAsset.id}"` + "}}"
-                : ``
-            }
+              formValue.name == "" ? `` : "name:" + `"${formValue.name}"` + ", "
+            } 
+            ${formValue.bio == "" ? `` : "bio:" + `"${formValue.bio}"` + ", "} 
+            ${id == "" ? `` : "photo: {connect: {id:" + `"${id}"` + "}}"}
           }
           where: {email: "${email}"}
         ) {

@@ -1,10 +1,14 @@
 "use client";
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { BsPencil } from "react-icons/bs";
 import service from "../lib/hygraphServices";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
 
-const EditProfile = ({author}) => {
+const EditProfile = ({ author }) => {
   let [isOpen, setIsOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
@@ -12,19 +16,23 @@ const EditProfile = ({author}) => {
   function openModal() {
     setIsOpen(true);
   }
-  
+
+  const [isLoading, setLoading] = useState(false);
+
   const submitData = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const formData = new FormData(event.target);
     const formValue = {
       dp: formData.get("dp"),
       name: formData.get("name"),
       bio: formData.get("bio"),
     };
-    console.log(formValue);
-    closeModal();
+    console.log(formValue.dp);
     const resp = await service.updateProfile(author.email, formValue);
     console.log(resp);
+    setLoading(false);
+    closeModal();
   };
   return (
     <>
@@ -102,73 +110,42 @@ const EditProfile = ({author}) => {
                     </svg>
                   </button>
                 </Dialog.Title>
-                <div className="text-base mt-2 text-center font-normal font-serif text-zinc-800 border-t pt-5 pb-8">
-                  <form
-                    className="space-y-4 md:space-y-6"
-                    onSubmit={submitData}
-                  >
-                    <div>
-                      <label
-                        htmlFor="dp"
-                        className="block mb-2 text-sm font-medium"
-                      >
-                        Display Picture
-                      </label>
-                      <input
-                        type="file"
-                        name="dp"
-                        id="dp"
-                        accept="image/jpg, image/png, image/jpeg, image/webp"
-                        className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block mb-2 text-sm font-medium"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        // value={author.name}
-                        placeholder="New name"
-                        className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                        // required
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="bio"
-                        className="block mb-2 text-sm font-medium"
-                      >
-                        Description
-                      </label>
-                      <input
-                        type="text"
-                        name="bio"
-                        id="bio"
-                        // value={author.bio}
-                        // required
-                        placeholder="New description"
-                        className="border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="mt-6 flex justify-center">
-                      <button
-                        type="submit"
-                        className="font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
-                      >
-                        Update
-                      </button>
-                    </div>
-                  </form>
-                </div>
+                
+                <form onSubmit={submitData} className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="name" className="text-right">
+                      Name
+                    </Label>
+                    <Input name="name" id="name" className="col-span-3" />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="dp" className="text-right">
+                      Display Picture
+                    </Label>
+                    <Input
+                      type="file"
+                      name="dp"
+                      id="dp"
+                      className="col-span-3"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="bio" className="text-right">
+                      Discription
+                    </Label>
+                    <Input name="bio" id="bio" className="col-span-3" />
+                  </div>
+                  <div className="mt-6 flex justify-center">
+                    {isLoading ? (
+                      <Button disabled>
+                        <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                        Please wait
+                      </Button>
+                    ) : (
+                      <Button type="submit">Update</Button>
+                    )}
+                  </div>
+                </form>
               </div>
             </Transition.Child>
           </div>
