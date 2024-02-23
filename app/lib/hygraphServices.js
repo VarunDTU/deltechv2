@@ -34,7 +34,6 @@ export class Service {
               url
             }
             title
-            readMoreLink
           }
         }
       `;

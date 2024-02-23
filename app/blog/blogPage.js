@@ -1,21 +1,21 @@
 "use client";
-import service from "@/app/lib/hygraphServices";
 import BlogCard from "@/app/components/cards/BlogCard";
 import SectionTitle from "../components/heading/sectionTitle";
 import { Tab } from "@headlessui/react";
-import { useState, useEffect } from "react";
 import { Categories } from "../lib/blogCategories";
-import Loading from "../components/loading";
+// import Loading from "../components/loading";
+// import { useState, useEffect } from "react";
 
-const BlogPage = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    service.getBlogs().then(({ blogs }) => {
-      setBlogs(blogs);
-      setLoading(false);
-    });
-  }, []);
+const BlogPage = ({blogs}) => {
+  console.log(blogs)
+  // const [blogs, setBlogs] = useState([]);
+  // const [isLoading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   service.getBlogs().then(({ blogs }) => {
+  //     setBlogs(blogs);
+  //     setLoading(false);
+  //   });
+  // }, []);
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -65,9 +65,9 @@ const BlogPage = () => {
             ))}
           </Tab.List>
 
-          {isLoading ? (
+          {/* {isLoading ? (
             <Loading/>
-          ) : (
+          ) : ( */}
             <Tab.Panels>
               {/* All Blogs*/}
               <Tab.Panel className="mt-16 max-w-screen-xl mx-auto">
@@ -109,7 +109,7 @@ const BlogPage = () => {
                 </Tab.Panel>
               ))}
             </Tab.Panels>
-          )}
+          {/* )} */}
         </Tab.Group>
       </div>
     </>

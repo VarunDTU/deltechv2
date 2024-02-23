@@ -1,9 +1,12 @@
 import BlogPage from "./blogPage";
+import service from "@/app/lib/hygraphServices";
 
-export default function Page() {
+export default async function Page() {
+  const {blogs} = await service.getBlogs();
+  // console.log(blogs)
   return (
     <div>
-      <BlogPage />
+      <BlogPage blogs={blogs} />
     </div>
   );
 }
