@@ -62,17 +62,31 @@ const Slider = () => {
                           {card?.title}
                         </h1>
                         {card?.title == "DELTECH MUN 2024" ? (
+                          <div className="pt-6 flex flex-col md:flex-row justify-center items-center">
                           <Link
                             href="https://app.deltechmun.in/"
-                            className="pt-10"
+                            // className="pt-10"
                           >
                             <span class="relative">
-                              <button class="rounded-xl cursor-pointer px-8 py-4 bg-[#4262FF] text-[#f1f1f1] hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather uppercase font-bold tracking-widest">
+                              <button class="m-1 rounded-xl cursor-pointer px-8 py-4 bg-[#4262FF] text-[#f1f1f1] hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather font-bold tracking-widest">
                                 Register
                                 {/* Login */}
                               </button>
                             </span>
                           </Link>
+                          <div className="m-2 font-mono text-lg self-center ">OR</div>
+                          <Link
+                            href="https://forms.gle/sER3DJu5nj9Z3WrPA"
+                            // className="pt-10"
+                          >
+                            <span class="relative">
+                              <button class="m-1 rounded-xl cursor-pointer px-4 py-4 bg-[#4262FF] text-[#f1f1f1] hover:bg-[#1033e4] transition-all transform duration-100 font-merriweather font-bold tracking-widest">
+                                Register via Form
+                                {/* Login */}
+                              </button>
+                            </span>
+                          </Link>
+                          </div>
                         ) : (
                           <div></div>
                         )}
