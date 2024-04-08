@@ -1,11 +1,13 @@
+import Image from "next/image";
 import Heading from "../components/heading/Heading";
 
 const About = () => {
   return (
     <div className="gap-8 items-center py-16 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6">
-      <video autoPlay loop muted preload="metadata" className="w-full m-auto">
+      {/* <video autoPlay loop muted preload="metadata" className="w-1/2 m-auto">
         <source src="/munVideo.mp4" />
-      </video>
+      </video> */}
+      <Image src={"/img/dlt_b_(black).png"} width={500} height={500}></Image>
       <div className="mt-4 md:mt-0">
         <div className="w-full relative py-10">
           <Heading background="about us" main="about us" />
