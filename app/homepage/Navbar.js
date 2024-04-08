@@ -1,11 +1,11 @@
 "use client";
-import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -45,7 +45,11 @@ export default function Navbar() {
       }`}
     >
       {({ open }) => (
-        <div className={` ${!open ? "bg-transparent" : "bg-slate-900"}`}>
+        <div
+          className={` ${
+            !open ? "bg-transparent backdrop-blur-sm" : "bg-slate-900"
+          }`}
+        >
           <div className=" mx-auto max-w-7xl p-2 md:px-6 lg:px-8">
             <div className="relative flex md:h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
