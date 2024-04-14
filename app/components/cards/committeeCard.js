@@ -166,7 +166,7 @@ const committeeCard = ({
                     )}
                   </div>
                 </div>
-                <Link
+                {/* <Link
                   href="https://app.deltechmun.in"
                   className="mt-6 flex justify-center"
                 >
@@ -175,6 +175,17 @@ const committeeCard = ({
                     className="font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
                   >
                     Register Now
+                  </button>
+                </Link> */}
+                <Link
+                  href={guide}
+                  className="mt-6 flex justify-center"
+                >
+                  <button
+                    type="button"
+                    className="font-merriweather tracking-wider text-md w-fit px-[60px] py-[15px] rounded-xl text-[#FFF] text-[18px] font-semibold mb-2 transition-all duration-500 bg-gradient-to-tl from-[#1341EC] via-[#5CA0F2] to-[#142e8a] bg-size-200 bg-pos-100 hover:bg-pos-0"
+                  >
+                    {shortName} Guide
                   </button>
                 </Link>
               </div>
