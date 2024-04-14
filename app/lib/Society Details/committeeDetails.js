@@ -82,7 +82,7 @@ export const committees = [
     shortName: "IP",
     name: "International Press",
     description: "Agenda Comming Soon",
-    guide: "/",
+    // guide: "/",
     person1: "Ms. Shreya Chatterjee",
     person1_designation: "Editor-in-Chief",
     person1_img: "/img/CommitteePanel/Shreya_Chatterjee_IP.jpg",
